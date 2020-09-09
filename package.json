@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "dr-light-music",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
+  "description": "Music Portfolio for Erik Neumann A.K.A Dr. Light",
+  "version": "0.1.2",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
@@ -14,9 +14,13 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.50",
+    "gatsby-plugin-styled-components": "^3.3.10",
+    "normalize.css": "^8.0.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "prettier": "2.1.0"
