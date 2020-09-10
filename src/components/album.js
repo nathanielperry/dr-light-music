@@ -14,7 +14,7 @@ export default class Album extends React.Component {
     render() {
         return (
             <AlbumContainer>
-                <a href="#"><img src={`/albumart/${this.props.albumArt}`}></img></a>
+                <a href="#" onClick={this.props.handleClick}><img src={`/albumart/${this.props.albumArt}`}></img></a>
                 <h3>{this.props.albumTitle}</h3>
             </AlbumContainer>
         )

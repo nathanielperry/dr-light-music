@@ -63,16 +63,20 @@ export default class AlbumModal extends React.Component {
             <div>
                 <FlexContainer>
                     <Modal>
-                        <AlbumArt src="/albumart/test.jpg" />
+                        <AlbumArt src={`/albumart/${this.props.album.albumArt}`} />
                         <InfoPane>
-                            <h3>Album Name</h3>
-                            <p>A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.</p>
+                            <h3>{this.props.album.albumTitle}</h3>
+                            <p>{this.props.album.albumDescription}</p>
                             <StreamingLinkList>
                                 <li>Spotify</li>
                                 <li>Google Music</li>
                                 <li>Apple Music</li>
+                                <li>Sound Cloud</li>
+                                <li>Pandora</li>
+                                <li>Amazon</li>
                             </StreamingLinkList>
                         </InfoPane>
+                        <a href="#" onClick={this.props.handleClose}>Close</a>
                     </Modal>
                 </FlexContainer>
                 <Shroud>
