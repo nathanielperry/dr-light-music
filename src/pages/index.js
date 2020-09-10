@@ -12,10 +12,10 @@ const StartMenu = styled.ul`
 `;
   
 const SocialMedia = styled.ul`
-  width: 150px;
+  width: 200px;
   height: 150px;
   display: grid;
-  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
   list-style: none;
 `;
 
@@ -50,10 +50,12 @@ export default function Home() {
           <li><StyledLink to="/discography">Albums</StyledLink></li>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><img src="https://source.unsplash.com/random/35x35"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="https://source.unsplash.com/random/35x35"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="https://source.unsplash.com/random/35x35"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="https://source.unsplash.com/random/35x35"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="twitter.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="facebook.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="soundcloud.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="spotify.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="apple.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="google.png"></img></SocialMediaIcon>
         </SocialMedia>
       </Container>
     </div>
