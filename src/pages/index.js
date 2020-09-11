@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Title = styled.h1`
   font-size: 3em;
   text-align: center;
+  margin: 100px 0 0;
 `;
 
 const StartMenu = styled.ul`
@@ -43,19 +44,19 @@ const Container = styled.div`
 export default function Home() {
   return (
     <div>
-      <Title>Dr. Light</Title>
+      <Title><img src="title.png" alt="dr. light" /></Title>
       <Container>
         <StartMenu>
           <li><StyledLink to="/about">Bio</StyledLink></li>
           <li><StyledLink to="/discography">Albums</StyledLink></li>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><img src="twitter.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="facebook.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="soundcloud.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="spotify.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="apple.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="google.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social1.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social2.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social3.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social4.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social5.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social6.png"></img></SocialMediaIcon>
         </SocialMedia>
       </Container>
     </div>
