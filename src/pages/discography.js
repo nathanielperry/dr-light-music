@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 import Navbar from '../components/navbar';
 import Album from '../components/album';
 import AlbumModal from '../components/AlbumModal';
@@ -59,29 +60,31 @@ export default class Discography extends React.Component {
         return (
             <div>
                 <Navbar></Navbar>
-                <Container>
-                    <AlbumList>
-                        { 
-                            albums.map(album => {
-                                return (
-                                    <AlbumLi>
-                                        <Album 
-                                            albumArt={album.albumArt} 
-                                            albumTitle={album.albumTitle} 
-                                            handleClick={() => this.openModal(album)}>
-                                        </Album>
-                                    </AlbumLi>
-                                );
-                            })
+                <Layout bgOffset={1920}>
+                    <Container>
+                        <AlbumList>
+                            { 
+                                albums.map(album => {
+                                    return (
+                                        <AlbumLi>
+                                            <Album 
+                                                albumArt={album.albumArt} 
+                                                albumTitle={album.albumTitle} 
+                                                handleClick={() => this.openModal(album)}>
+                                            </Album>
+                                        </AlbumLi>
+                                    );
+                                })
+                            }
+                        </AlbumList>
+                        { this.state.currentModal &&
+                            <AlbumModal 
+                                album={this.state.currentModal}
+                                handleClose={this.closeModal.bind(this)}    
+                            />
                         }
-                    </AlbumList>
-                    { this.state.currentModal &&
-                        <AlbumModal 
-                            album={this.state.currentModal}
-                            handleClose={this.closeModal.bind(this)}    
-                        />
-                    }
-                </Container>
+                    </Container>
+                </Layout>
             </div>
         )
     }

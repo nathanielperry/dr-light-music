@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const NavContainer = styled.nav`
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     background: black;

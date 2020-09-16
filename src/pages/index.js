@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 
 const Title = styled.h1`
   font-size: 3em;
   text-align: center;
-  margin: 100px 0 0;
+  padding: 100px 0 0;
+  margin: 0;
 `;
 
 const StartMenu = styled.ul`
@@ -43,7 +45,7 @@ const Container = styled.div`
 
 export default function Home() {
   return (
-    <div>
+    <Layout bgOffset={960}>
       <Title><img src="title.png" alt="dr. light" /></Title>
       <Container>
         <StartMenu>
@@ -59,6 +61,6 @@ export default function Home() {
           <SocialMediaIcon><img src="social6.png"></img></SocialMediaIcon>
         </SocialMedia>
       </Container>
-    </div>
+    </Layout>
   )
 }
