@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
 import Layout from '../components/layout';
+
+//Silkscreen font by Jason Kottke
+//License: https://www.fontsquirrel.com/license/Silkscreen
 
 const Title = styled.h1`
   font-size: 3em;
@@ -28,7 +31,7 @@ const SocialMediaIcon = styled.li`
   align-items: center;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(TransitionLink)`
   font-size: 1.5em;
   color: #efefef;
   text-decoration: none;

@@ -53,8 +53,12 @@ const StreamingLinkList = styled.ul`
     list-style: none;
     margin-top: 50px;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+`;
+
+const StreamingListItem = styled.li`
+    
 `;
 
 export default class AlbumModal extends React.Component {
@@ -68,12 +72,12 @@ export default class AlbumModal extends React.Component {
                             <h3>{this.props.album.albumTitle}</h3>
                             <p>{this.props.album.albumDescription}</p>
                             <StreamingLinkList>
-                                <li>Spotify</li>
-                                <li>Google Music</li>
-                                <li>Apple Music</li>
-                                <li>Sound Cloud</li>
-                                <li>Pandora</li>
-                                <li>Amazon</li>
+                                <StreamingListItem><a href="#"><img src="" alt="Spotify" /></a></StreamingListItem>
+                                <StreamingListItem><a href="#"><img src="" alt="Google Music" /></a></StreamingListItem>
+                                <StreamingListItem><a href="#"><img src="" alt="Apple Music" /></a></StreamingListItem>
+                                <StreamingListItem><a href="#"><img src="" alt="Sound Cloud" /></a></StreamingListItem>
+                                <StreamingListItem><a href="#"><img src="" alt="Pandora" /></a></StreamingListItem>
+                                <StreamingListItem><a href="#"><img src="" alt="Amazon" /></a></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
                         <a href="#" onClick={this.props.handleClose}>Close</a>

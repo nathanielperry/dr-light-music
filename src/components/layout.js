@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { TransitionPortal } from "gatsby-plugin-transition-link";
 
 export default function Layout(props) {
     const OuterContainer = styled.div`

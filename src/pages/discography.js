@@ -19,21 +19,43 @@ const albums = [
     },
 ]
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 600px;
+const TvSupports = styled.div`
+    height: 288px;
+    background: url("tv.png") 50% -192px no-repeat;
+`;
+
+const AlbumsContainer = styled.div`
+    position: relative;
+    height: 448px;
+    width: 608px;
+    margin: auto;
+    box-sizing: border-box;
+    background: url("tv.png") 50% -480px no-repeat;
+    padding: 24px;
 `;
 
 const AlbumList = styled.ul`
     margin: auto;
     list-style: none;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+`;
+    
+const TvScanlines = styled.div`
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 560px;
+    height: 400px;
+    background: url("scanlines.png");
+    opacity: 0.3;
 `;
 
 const AlbumLi = styled.li`
     margin-left: 2rem;
+    height: 60%;
 `;
 
 export default class Discography extends React.Component {
@@ -60,8 +82,10 @@ export default class Discography extends React.Component {
         return (
             <div>
                 <Navbar></Navbar>
-                <Layout bgOffset={1920}>
-                    <Container>
+                <Layout bgOffset={2880}>
+                    <TvSupports />
+                    <AlbumsContainer>
+                        {/* <TvScanlines /> */}
                         <AlbumList>
                             { 
                                 albums.map(album => {
@@ -83,7 +107,7 @@ export default class Discography extends React.Component {
                                 handleClose={this.closeModal.bind(this)}    
                             />
                         }
-                    </Container>
+                    </AlbumsContainer>
                 </Layout>
             </div>
         )

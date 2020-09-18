@@ -7,14 +7,17 @@ const NavContainer = styled.nav`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background: black;
-    padding: 0 1rem;
+    // background: black;
+    // opacity: 0.8;
+    padding-left: 2em;
+    text-shadow: black 2px 2px;
 `;
 
 const NavUl = styled.ul`
     list-style: none;
     display: flex;
     align-items: center;
+    padding-right: 4em;
 `;
 
 const NavLi = styled.li`
