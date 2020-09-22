@@ -29,20 +29,17 @@ const Modal = styled.div`
     position: fixed;
     width: 60vw;
     max-width: 800px;
-    border: 1px solid white;
+    border: 5px solid white;
     border-radius: 25px;
     background: black;
-    padding-top: 50px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 50px;
+    padding: 50px 40px;
 
     display: flex;
     align-items: flex-start;
 `;
 
 const InfoPane = styled.div`
-    width: 70%;
+    width: 90%;
 `;
 
 const AlbumArt = styled.img`
@@ -54,12 +51,28 @@ const StreamingLinkList = styled.ul`
     margin-top: 50px;
     padding: 0;
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+    row-gap: 10px;
 `;
 
 const StreamingListItem = styled.li`
     
 `;
+
+const StyledLink = styled.a`
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    &:hover {
+        color: cyan;
+    }
+`;
+
+const StreamIcon = styled.img`
+    margin: 0 10px;
+`;
+
+//TODO: Move StreamingListItem into own component.
 
 export default class AlbumModal extends React.Component {
     render() {
@@ -72,15 +85,15 @@ export default class AlbumModal extends React.Component {
                             <h3>{this.props.album.albumTitle}</h3>
                             <p>{this.props.album.albumDescription}</p>
                             <StreamingLinkList>
-                                <StreamingListItem><a href="#"><img src="" alt="Spotify" /></a></StreamingListItem>
-                                <StreamingListItem><a href="#"><img src="" alt="Google Music" /></a></StreamingListItem>
-                                <StreamingListItem><a href="#"><img src="" alt="Apple Music" /></a></StreamingListItem>
-                                <StreamingListItem><a href="#"><img src="" alt="Sound Cloud" /></a></StreamingListItem>
-                                <StreamingListItem><a href="#"><img src="" alt="Pandora" /></a></StreamingListItem>
-                                <StreamingListItem><a href="#"><img src="" alt="Amazon" /></a></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming1.png" alt="SoundCloud" />S. Cloud</StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming2.png" alt="Spotify" />S. Spotify</StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming3.png" alt="Apple Music" />M. Apple</StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming4.png" alt="Youtube Music" />M. Youtube</StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming5.png" alt="Pandora" />S. Pandora</StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" />M. Amazon</StyledLink></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
-                        <a href="#" onClick={this.props.handleClose}>Close</a>
+                        <StyledLink href="#" onClick={this.props.handleClose}>X</StyledLink>
                     </Modal>
                 </FlexContainer>
                 <Shroud>
