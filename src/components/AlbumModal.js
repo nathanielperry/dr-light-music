@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
+import devices from '../styles/devices';
+
 const FlexContainer = styled.div`
     position: fixed;
     z-index: 25;
@@ -12,6 +14,10 @@ const FlexContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media ${devices.mobileL} {
+        display: block;
+    }
 `;
 
 const Shroud = styled.div`
@@ -27,36 +33,87 @@ const Shroud = styled.div`
 
 const Modal = styled.div`
     position: fixed;
+    z-index: 26;
     width: 60vw;
     max-width: 800px;
     border: 5px solid white;
     border-radius: 25px;
     background: black;
-    padding: 50px 40px;
+    padding: 20px 40px;
 
-    display: flex;
-    align-items: flex-start;
+    @media ${devices.mobileL} {
+        width: auto;
+        border: none;
+        border-radius: 0px;
+    }
 `;
-
+    
 const InfoPane = styled.div`
-    width: 90%;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr
+    align-content: start;
+    column-gap: 20px;
+
+    @media ${devices.tablet} {
+        grid-template: none / 1fr 1fr;
+    }
+
+    @media ${devices.mobileL} {
+        grid-template: repeat(3, 1fr) / 1fr;
+    }
 `;
 
 const AlbumArt = styled.img`
-    margin-right: 40px;
+    width: 100%;
+
+    @media ${devices.tablet} {
+        align-self: center;
+    }
+`;
+
+const AlbumText = styled.div`
+    h3 {
+        margin: 0;
+    }
+
+    @media ${devices.tablet} {
+        grid-column-end: span 2;
+    }
+
+    @media ${devices.mobileL} {
+        grid-column-end: span 1;
+    }
 `;
 
 const StreamingLinkList = styled.ul`
     list-style: none;
-    margin-top: 50px;
     padding: 0;
+    grid-column-end: span 2;
+    align-self: start;
+
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(2, 1fr);
     row-gap: 10px;
+
+    @media ${devices.tablet} {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        grid-template: none / 1fr;
+    }
+
+    @media ${devices.mobileL} {
+        grid-row-start: 2;
+        grid-column-start: 1;
+    }
 `;
 
 const StreamingListItem = styled.li`
     
+`;
+
+const CloseLink = styled.button`
+    float: right;
 `;
 
 const StyledLink = styled.a`
@@ -80,10 +137,13 @@ export default class AlbumModal extends React.Component {
             <div>
                 <FlexContainer>
                     <Modal>
-                        <AlbumArt src={`/albumart/${this.props.album.albumArt}`} />
+                        <CloseLink href="#" onClick={this.props.handleClose}>X</CloseLink>
                         <InfoPane>
-                            <h3>{this.props.album.albumTitle}</h3>
-                            <p>{this.props.album.albumDescription}</p>
+                            <AlbumArt src={`/albumart/${this.props.album.albumArt}`} />
+                            <AlbumText>
+                                <h3>{this.props.album.albumTitle}</h3>
+                                <p>{this.props.album.albumDescription}</p>
+                            </AlbumText>
                             <StreamingLinkList>
                                 <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming1.png" alt="SoundCloud" />S. Cloud</StyledLink></StreamingListItem>
                                 <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming2.png" alt="Spotify" />S. Spotify</StyledLink></StreamingListItem>
@@ -93,7 +153,6 @@ export default class AlbumModal extends React.Component {
                                 <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" />M. Amazon</StyledLink></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
-                        <StyledLink href="#" onClick={this.props.handleClose}>X</StyledLink>
                     </Modal>
                 </FlexContainer>
                 <Shroud>

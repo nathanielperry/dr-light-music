@@ -6,6 +6,8 @@ import Navbar from '../components/navbar';
 import Album from '../components/album';
 import AlbumModal from '../components/AlbumModal';
 
+import devices from '../styles/devices';
+
 const albums = [
     {
         albumTitle: 'Triangle of Stars',
@@ -22,25 +24,46 @@ const albums = [
 const TvSupports = styled.div`
     height: 288px;
     background: url("tv.png") 50% -192px no-repeat;
+
+    @media ${devices.mobileL} {
+        height: 100px;
+        background: none;
+    }
 `;
 
 const AlbumsContainer = styled.div`
-    position: relative;
-    height: 448px;
-    width: 608px;
-    margin: auto;
     box-sizing: border-box;
-    background: url("tv.png") 50% -480px no-repeat;
-    padding: 24px;
+    width: 600px;
+    margin: auto;
+    padding: 20px;
+    
+    background: url(scanlines.png) repeat;
+    border: 32px double black;
+    border-image: url(border.png) 32 repeat;
+    
+    @media ${devices.mobileL} {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        width: 90%;
+        height: 80vh;
+        padding: 0;
+    }
 `;
 
 const AlbumList = styled.ul`
     margin: auto;
+    padding: 0;
     list-style: none;
+    
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 100%;
+    align-items: stretch;
+
+    @media ${devices.mobileL} {
+        width: 100%;
+        // display: block;
+
+    }
 `;
     
 const TvScanlines = styled.div`
@@ -51,11 +74,6 @@ const TvScanlines = styled.div`
     height: 400px;
     background: url("scanlines.png");
     opacity: 0.3;
-`;
-
-const AlbumLi = styled.li`
-    margin-left: 2rem;
-    height: 60%;
 `;
 
 export default class Discography extends React.Component {
@@ -90,13 +108,12 @@ export default class Discography extends React.Component {
                             { 
                                 albums.map(album => {
                                     return (
-                                        <AlbumLi>
-                                            <Album 
-                                                albumArt={album.albumArt} 
-                                                albumTitle={album.albumTitle} 
-                                                handleClick={() => this.openModal(album)}>
-                                            </Album>
-                                        </AlbumLi>
+                                        <Album 
+                                            albumArt={album.albumArt} 
+                                            albumTitle={album.albumTitle}
+                                            albumDescription={album.albumDescription} 
+                                            handleClick={() => this.openModal(album)}>
+                                        </Album>
                                     );
                                 })
                             }

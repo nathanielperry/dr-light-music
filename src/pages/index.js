@@ -3,6 +3,8 @@ import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 
+import devices from '../styles/devices';
+
 //Silkscreen font by Jason Kottke
 //License: https://www.fontsquirrel.com/license/Silkscreen
 
@@ -11,10 +13,21 @@ const Title = styled.h1`
   text-align: center;
   padding: 100px 0 0;
   margin: 0;
+
+  @media ${devices.mobileM} {
+    img {
+      width: 90vw;
+    }
+  }
 `;
 
 const StartMenu = styled.ul`
   list-style: none;
+  padding: 0;
+  
+  @media ${devices.mobileL} {
+    margin-top: 0;
+  }
 `;
   
 const SocialMedia = styled.ul`
@@ -23,6 +36,11 @@ const SocialMedia = styled.ul`
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(3, 1fr);
   list-style: none;
+  padding: 0;
+
+  @media ${devices.mobileL} {
+    margin-top: 0;
+  }
 `;
 
 const SocialMediaIcon = styled.li`
@@ -37,20 +55,24 @@ const StyledLink = styled(TransitionLink)`
   text-decoration: none;
 `;
 
-const Container = styled.div`
+const MenuContainer = styled.div`
   width: 400px;
-  height: 400px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media ${devices.mobileL} {
+    width: 320px;
+    flex-direction: column;
+  }
 `;
 
 export default function Home() {
   return (
     <Layout bgOffset={960}>
       <Title><img src="title.png" alt="dr. light" /></Title>
-      <Container>
+      <MenuContainer>
         <StartMenu>
           <li><StyledLink to="/about">Bio</StyledLink></li>
           <li><StyledLink to="/discography">Albums</StyledLink></li>
@@ -63,7 +85,7 @@ export default function Home() {
           <SocialMediaIcon><img src="social5.png"></img></SocialMediaIcon>
           <SocialMediaIcon><img src="social6.png"></img></SocialMediaIcon>
         </SocialMedia>
-      </Container>
+      </MenuContainer>
     </Layout>
   )
 }
