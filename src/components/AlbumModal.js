@@ -39,7 +39,11 @@ const Modal = styled.div`
     border: 5px solid white;
     border-radius: 25px;
     background: black;
+<<<<<<< HEAD
     padding: 20px 40px;
+=======
+    padding: 50px 40px;
+>>>>>>> 43c1e6ffbc0c318e323710f7c15c058313169f1a
 
     @media ${devices.mobileL} {
         width: auto;
@@ -49,6 +53,7 @@ const Modal = styled.div`
 `;
     
 const InfoPane = styled.div`
+<<<<<<< HEAD
     display: grid;
     grid-template: 1fr 1fr / 1fr 1fr
     align-content: start;
@@ -61,6 +66,9 @@ const InfoPane = styled.div`
     @media ${devices.mobileL} {
         grid-template: repeat(3, 1fr) / 1fr;
     }
+=======
+    width: 90%;
+>>>>>>> 43c1e6ffbc0c318e323710f7c15c058313169f1a
 `;
 
 const AlbumArt = styled.img`
@@ -94,6 +102,7 @@ const StreamingLinkList = styled.ul`
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(2, 1fr);
     row-gap: 10px;
+<<<<<<< HEAD
 
     @media ${devices.tablet} {
         grid-row-start: 1;
@@ -106,16 +115,21 @@ const StreamingLinkList = styled.ul`
         grid-row-start: 2;
         grid-column-start: 1;
     }
+=======
+>>>>>>> 43c1e6ffbc0c318e323710f7c15c058313169f1a
 `;
 
 const StreamingListItem = styled.li`
     
 `;
 
+<<<<<<< HEAD
 const CloseLink = styled.button`
     float: right;
 `;
 
+=======
+>>>>>>> 43c1e6ffbc0c318e323710f7c15c058313169f1a
 const StyledLink = styled.a`
     color: white;
     text-decoration: none;
@@ -153,6 +167,10 @@ export default class AlbumModal extends React.Component {
                                 <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" />M. Amazon</StyledLink></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
+<<<<<<< HEAD
+=======
+                        <StyledLink href="#" onClick={this.props.handleClose}>X</StyledLink>
+>>>>>>> 43c1e6ffbc0c318e323710f7c15c058313169f1a
                     </Modal>
                 </FlexContainer>
                 <Shroud>
