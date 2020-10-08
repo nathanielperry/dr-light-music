@@ -32,6 +32,7 @@ const TvSupports = styled.div`
 `;
 
 const AlbumsContainer = styled.div`
+    position: relative;
     box-sizing: border-box;
     width: 600px;
     margin: auto;
@@ -58,20 +59,51 @@ const AlbumList = styled.ul`
     display: flex;
     flex-direction: row;
     align-items: stretch;
+`;
+
+const FixWrapper = styled.div`
+    display: none;
+    position: absolute;
+    height: 10px;
+    margin: auto;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
 
     @media ${devices.mobileL} {
-        width: 100%;
-        // display: block;
-
+        display: block;
     }
 `;
     
+const Fix = styled.div`
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    transform: translate(20%, -25px);
+    `;
+    
+    const PreviousAlbumArrow = styled.button`
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: white;
+    text-shadow: black 3px 3px 3px;
+    // background: rgba(75, 105, 97, 1);
+    background: #549670;
+    border-radius: 10px;
+`;
+
+const NextAlbumArrow = styled(PreviousAlbumArrow)`
+
+`;
+
 const TvScanlines = styled.div`
     position: absolute;
-    top: 24px;
-    left: 24px;
-    width: 560px;
-    height: 400px;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
     background: url("scanlines.png");
     opacity: 0.3;
 `;
@@ -81,6 +113,7 @@ export default class Discography extends React.Component {
         super(props);
         this.state = {
             currentModal: null,
+            currentAlbum: 0,
         }
     }
 
@@ -103,23 +136,29 @@ export default class Discography extends React.Component {
                 <Layout bgOffset={2880}>
                     <TvSupports />
                     <AlbumsContainer>
-                        {/* <TvScanlines /> */}
+                        {/* <TvScanlines  />     */}
                         <AlbumList>
                             { 
                                 albums.map(album => {
                                     return (
                                         <Album 
-                                            albumArt={album.albumArt} 
-                                            albumTitle={album.albumTitle}
-                                            albumDescription={album.albumDescription} 
-                                            handleClick={() => this.openModal(album)}>
+                                        albumArt={album.albumArt} 
+                                        albumTitle={album.albumTitle}
+                                        albumDescription={album.albumDescription} 
+                                        handleClick={() => this.openModal(album)}>
                                         </Album>
                                     );
                                 })
                             }
                         </AlbumList>
+                        <FixWrapper>
+                            <Fix>
+                                <PreviousAlbumArrow>{'<'}</PreviousAlbumArrow>
+                                <NextAlbumArrow>{'>'}</NextAlbumArrow>
+                            </Fix>
+                        </FixWrapper>
                         { this.state.currentModal &&
-                            <AlbumModal 
+                            <AlbumModal
                                 album={this.state.currentModal}
                                 handleClose={this.closeModal.bind(this)}    
                             />

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import devices from '../styles/devices';
 
+
 export default function Layout(props) {
     const OuterContainer = styled.div`
         width: 100%;

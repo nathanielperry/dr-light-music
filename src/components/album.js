@@ -37,7 +37,7 @@ const AlbumContainer = styled.li`
 
 const AlbumText = styled.p`
     display: none;
-    margin: 10px 0;
+    margin: 10px 0 30px;
 
     @media ${devices.mobileL} {
         display: block;
@@ -60,7 +60,7 @@ export default class Album extends React.Component {
                 <AlbumText>
                     {this.props.albumDescription}
                 </AlbumText>
-                <QuickStreamLinks>
+                <QuickStreamLinks onClick={this.props.handleClick}>
                     Listen Now
                 </QuickStreamLinks>
                 <a href="#" onClick={this.props.handleClick}><img src={`/albumart/${this.props.albumArt}`}></img></a>
