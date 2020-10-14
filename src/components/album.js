@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import devices from '../styles/devices';
 
 const AlbumContainer = styled.li`
-    // height: 300px;
-    width: 200px;
     margin-left: 1rem;
     padding: 0.7rem;
     background: rgba(0, 0, 0, 0.7);
@@ -18,9 +16,9 @@ const AlbumContainer = styled.li`
     }
 
     @media ${devices.mobileL} {
+        scroll-snap-align: start;
         width: 100%;
         margin-left: 0;
-
         flex: 0 0 90%;
 
         display: flex;
@@ -30,7 +28,8 @@ const AlbumContainer = styled.li`
         border-radius: 0;
 
         h3 {
-            margin-left: 10px;
+            margin: 5px 0;
+            // margin-left: 10px;
         }
     }
 `;
@@ -56,7 +55,9 @@ const QuickStreamLinks = styled.button`
 export default class Album extends React.Component {
     render() {
         return (
-            <AlbumContainer>
+            <AlbumContainer
+                id={this.props.albumAnchor}>
+                name={this.props.albumAnchor}>
                 <AlbumText>
                     {this.props.albumDescription}
                 </AlbumText>

@@ -10,13 +10,27 @@ import devices from '../styles/devices';
 
 const albums = [
     {
-        albumTitle: 'Triangle of Stars',
+        albumTitle: 'The Light Hits',
+        albumAnchor: 'the_light_hits',
         albumArt: 'test.jpg',
         albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
     },
     {
         albumTitle: 'Phobia',
+        albumAnchor: 'phobia',
         albumArt: 'phobia.jpg',
+        albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
+    },
+    {
+        albumTitle: 'Triangle of Stars',
+        albumAnchor: 'triangle_of_stars',
+        albumArt: 'test.jpg',
+        albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
+    },
+    {
+        albumTitle: 'CTI',
+        albumAnchor: 'cti',
+        albumArt: 'test.jpg',
         albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
     },
 ]
@@ -26,6 +40,7 @@ const TvSupports = styled.div`
     background: url("tv.png") 50% -192px no-repeat;
 
     @media ${devices.mobileL} {
+        width: 90%;
         height: 100px;
         background: none;
     }
@@ -43,7 +58,9 @@ const AlbumsContainer = styled.div`
     border-image: url(border.png) 32 repeat;
     
     @media ${devices.mobileL} {
-        overflow-x: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        overflow-x: scroll;
         overflow-y: scroll;
         width: 90%;
         height: 80vh;
@@ -129,6 +146,37 @@ export default class Discography extends React.Component {
         });
     }
 
+    setCurrentAlbum(newAlbum) {
+        this.setState({
+            currentAlbum: newAlbum,
+        });
+    }
+    
+    nextAlbumAnchor(text) {
+        const currentAlbum = this.state.currentAlbum;
+        const nextAlbum = (currentAlbum + 1) % albums.length;
+        return (
+            <a 
+                href={'#' + albums[nextAlbum].albumAnchor}
+                onClick={() => this.setCurrentAlbum(nextAlbum)}>
+                {text}
+            </a>
+        );
+    }
+    
+    previousAlbumAnchor(text) {
+        const currentAlbum = this.state.currentAlbum;
+        let prevAlbum = currentAlbum - 1;
+        prevAlbum = prevAlbum < 0 ? albums.length - 1 : prevAlbum;
+        return (
+            <a 
+                href={'#' + albums[prevAlbum].albumAnchor}
+                onClick={() => this.setCurrentAlbum(prevAlbum)}>
+                {text}
+            </a>
+        );
+    }
+
     render() {
         return (
             <div>
@@ -143,6 +191,7 @@ export default class Discography extends React.Component {
                                     return (
                                         <Album 
                                         albumArt={album.albumArt} 
+                                        albumAnchor={album.albumAnchor}
                                         albumTitle={album.albumTitle}
                                         albumDescription={album.albumDescription} 
                                         handleClick={() => this.openModal(album)}>
@@ -153,8 +202,8 @@ export default class Discography extends React.Component {
                         </AlbumList>
                         <FixWrapper>
                             <Fix>
-                                <PreviousAlbumArrow>{'<'}</PreviousAlbumArrow>
-                                <NextAlbumArrow>{'>'}</NextAlbumArrow>
+                                {this.previousAlbumAnchor('<')}
+                                {this.nextAlbumAnchor('>')}
                             </Fix>
                         </FixWrapper>
                         { this.state.currentModal &&
