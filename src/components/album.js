@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import devices from '../styles/devices';
@@ -9,6 +8,7 @@ const AlbumContainer = styled.li`
     padding: 0.7rem;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
+    flex: 0 0 40%;
 
     img {
         width: 100%;
@@ -56,15 +56,18 @@ export default class Album extends React.Component {
     render() {
         return (
             <AlbumContainer
-                id={this.props.albumAnchor}>
                 name={this.props.albumAnchor}>
                 <AlbumText>
                     {this.props.albumDescription}
                 </AlbumText>
-                <QuickStreamLinks onClick={this.props.handleClick}>
+                <QuickStreamLinks onClick={this.props.openModal}>
                     Listen Now
                 </QuickStreamLinks>
-                <a href="#" onClick={this.props.handleClick}><img src={`/albumart/${this.props.albumArt}`}></img></a>
+                <button onClick={this.props.openModal}>
+                    <img 
+                        src={`/albumart/${this.props.albumArt}`}
+                        alt='Album Art' />
+                </button>
                 <h3>{this.props.albumTitle}</h3>
             </AlbumContainer>
         )

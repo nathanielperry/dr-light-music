@@ -78,12 +78,12 @@ export default function Home() {
           <li><StyledLink to="/discography">Albums</StyledLink></li>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><img src="social1.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social2.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social3.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social4.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social5.png"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social6.png"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social1.png" alt="Twitter"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social2.png" alt="Soundcloud"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social3.png" alt="Facebook"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social4.png" alt="Spotify"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social5.png" alt="Apple Music"></img></SocialMediaIcon>
+          <SocialMediaIcon><img src="social6.png" alt="Youtube Music"></img></SocialMediaIcon>
         </SocialMedia>
       </MenuContainer>
     </Layout>
