@@ -2,7 +2,7 @@
   "name": "dr-light-music",
   "private": true,
   "description": "Music Portfolio for Erik Neumann A.K.A Dr. Light",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",

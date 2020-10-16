@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import devices from '../styles/devices';
 
 const FlexContainer = styled.div`
@@ -13,10 +12,6 @@ const FlexContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @media ${devices.mobileL} {
-        display: block;
-    }
 `;
 
 const Shroud = styled.div`
@@ -31,7 +26,6 @@ const Shroud = styled.div`
 `;
 
 const Modal = styled.div`
-    position: fixed;
     z-index: 26;
     width: 60vw;
     max-width: 800px;
@@ -41,9 +35,7 @@ const Modal = styled.div`
     padding: 20px 40px;
 
     @media ${devices.mobileL} {
-        width: auto;
-        border: none;
-        border-radius: 0px;
+        padding: 10px;
     }
 `;
     
@@ -58,7 +50,8 @@ const InfoPane = styled.div`
     }
 
     @media ${devices.mobileL} {
-        grid-template: repeat(3, 1fr) / 1fr;
+        grid-template: 1fr / 1fr;
+
     }
 `;
 
@@ -67,6 +60,10 @@ const AlbumArt = styled.img`
 
     @media ${devices.tablet} {
         align-self: center;
+    }
+
+    @media ${devices.mobileL} {
+        border-radius: 10px;
     }
 `;
 
@@ -80,7 +77,7 @@ const AlbumText = styled.div`
     }
 
     @media ${devices.mobileL} {
-        grid-column-end: span 1;
+        display: none;
     }
 `;
 
@@ -113,6 +110,19 @@ const StreamingListItem = styled.li`
 
 const CloseLink = styled.button`
     float: right;
+
+    @media ${devices.mobileL} {
+        display: none;
+    }
+`;
+
+const CloseLinkMobile = styled.button`
+    display: none;
+    margin: auto;
+
+    @media ${devices.mobileL} {
+        display: block;    
+    }
 `;
 
 const StyledLink = styled.a`
@@ -136,7 +146,7 @@ export default class AlbumModal extends React.Component {
             <div>
                 <FlexContainer>
                     <Modal>
-                        <CloseLink href="#" onClick={this.props.handleClose}>X</CloseLink>
+                        <CloseLink onClick={this.props.handleClose}>X</CloseLink>
                         <InfoPane>
                             <AlbumArt src={`/albumart/${this.props.album.albumArt}`} />
                             <AlbumText>
@@ -152,6 +162,7 @@ export default class AlbumModal extends React.Component {
                                 <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" />M. Amazon</StyledLink></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
+                        <CloseLinkMobile onClick={this.props.handleClose}>Close</CloseLinkMobile>
                     </Modal>
                 </FlexContainer>
                 <Shroud>
