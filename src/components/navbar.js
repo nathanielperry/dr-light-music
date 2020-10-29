@@ -15,6 +15,7 @@ const NavContainer = styled.nav`
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     animation: slideDown 2s cubic-bezier(0, 0.9, 0.9, 1.0);
 
