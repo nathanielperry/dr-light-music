@@ -192,9 +192,9 @@ export default class AlbumModal extends React.Component {
                         </InfoPane>
                         <CloseLinkMobile onClick={this.props.handleClose}>Close</CloseLinkMobile>
                     </Modal>
+                    <Shroud onClick={this.props.handleClose}>
+                    </Shroud>
                 </FlexContainer>
-                <Shroud>
-                </Shroud>
             </div>
         )
     }
