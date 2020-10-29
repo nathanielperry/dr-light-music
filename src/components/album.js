@@ -65,11 +65,11 @@ export default class Album extends React.Component {
                 <QuickStreamLinks onClick={this.props.openModal}>
                     Listen Now
                 </QuickStreamLinks>
-                <button onClick={this.props.openModal}>
+                <a href={'#' + this.props.albumAnchor} onClick={this.props.openModal}>
                     <img 
                         src={`/albumart/${this.props.albumArt}`}
                         alt='Album Art' />
-                </button>
+                </a>
                 <h3>{this.props.albumTitle}</h3>
             </AlbumContainer>
         )
