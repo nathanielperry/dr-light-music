@@ -133,7 +133,13 @@ const StreamingLinkList = styled.ul`
 `;
 
 const StreamingListItem = styled.li`
-    
+    height: 26px;
+    p {
+        margin: 0;
+        vertical-align: middle;
+        line-height: 26px;
+        display: inline-block;
+    }
 `;
 
 const CloseLink = styled.button`
@@ -156,13 +162,18 @@ const CloseLinkMobile = styled.button`
 const StyledLink = styled.a`
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
     &:hover {
         color: cyan;
+    }
+
+    @media ${devices.mobileS} {
+        font-size: 15px;
     }
 `;
 
 const StreamIcon = styled.img`
+    vertical-align: top;
     margin: 0 10px;
 `;
 
@@ -182,12 +193,12 @@ export default class AlbumModal extends React.Component {
                                 <p>{this.props.album.albumDescription}</p>
                             </AlbumText>
                             <StreamingLinkList>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming1.png" alt="SoundCloud" />S. Cloud</StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming2.png" alt="Spotify" />S. Spotify</StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming3.png" alt="Apple Music" />M. Apple</StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming4.png" alt="Youtube Music" />M. Youtube</StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming5.png" alt="Pandora" />S. Pandora</StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" />M. Amazon</StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming1.png" alt="SoundCloud" /><p>Soundcloud</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming2.png" alt="Spotify" /><p>Spotify</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming3.png" alt="Apple Music" /><p>Apple Music</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming4.png" alt="Youtube Music" /><p>Youtube Music</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming5.png" alt="Pandora" /><p>Pandora</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" /><p>Amazon Music</p></StyledLink></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
                         <CloseLinkMobile onClick={this.props.handleClose}>Close</CloseLinkMobile>
