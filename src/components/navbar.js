@@ -6,6 +6,7 @@ import devices from '../styles/devices';
 const NavContainer = styled.nav`
     position: fixed;
     width: 100%;
+    height: 80px;
     padding-left: 2em;
     
     background: black;
@@ -14,6 +15,18 @@ const NavContainer = styled.nav`
 
     display: flex;
     justify-content: space-between;
+
+    animation: slideDown 2s cubic-bezier(0, 0.9, 0.9, 1.0);
+
+    @keyframes slideDown {
+        0% {
+            top: -80px;
+        }
+
+        100% {
+            top: 0;
+        }
+    }
 `;
 
 const NavUl = styled.ul`

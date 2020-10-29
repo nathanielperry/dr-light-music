@@ -5,21 +5,10 @@ import Layout from '../components/layout';
 
 import devices from '../styles/devices';
 
+import Title from '../components/title';
+
 //Silkscreen font by Jason Kottke
 //License: https://www.fontsquirrel.com/license/Silkscreen
-
-const Title = styled.h1`
-  font-size: 3em;
-  text-align: center;
-  padding: 100px 0 0;
-  margin: 0;
-
-  @media ${devices.mobileM} {
-    img {
-      width: 90vw;
-    }
-  }
-`;
 
 const StartMenu = styled.ul`
   list-style: none;
@@ -71,7 +60,7 @@ const MenuContainer = styled.div`
 export default function Home() {
   return (
     <Layout bgOffset={960}>
-      <Title><img src="title.png" alt="dr. light" /></Title>
+      <Title />
       <MenuContainer>
         <StartMenu>
           <li><StyledLink to="/about">Bio</StyledLink></li>

@@ -17,6 +17,7 @@ const AlbumContainer = styled.li`
 
     @media ${devices.mobileL} {
         scroll-snap-align: start;
+        height: 70vh;
         width: 100%;
         margin-left: 0;
         flex: 0 0 90%;
@@ -37,7 +38,7 @@ const AlbumContainer = styled.li`
 const AlbumText = styled.p`
     display: none;
     margin: 10px 0 30px;
-
+    overflow: scroll;
     @media ${devices.mobileL} {
         display: block;
     }
@@ -56,6 +57,7 @@ export default class Album extends React.Component {
     render() {
         return (
             <AlbumContainer
+                id={this.props.albumAnchor}
                 name={this.props.albumAnchor}>
                 <AlbumText>
                     {this.props.albumDescription}

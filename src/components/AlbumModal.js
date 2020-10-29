@@ -22,7 +22,18 @@ const Shroud = styled.div`
     width: 100%;
     height: 100%;
     background: black;
-    opacity: 0.8;
+    
+    animation: popIn 0.2s ease-out forwards;
+
+    @keyframes popIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0.8;
+        }
+    }
 `;
 
 const Modal = styled.div`
@@ -34,8 +45,25 @@ const Modal = styled.div`
     background: black;
     padding: 20px 40px;
 
+    animation: popInAndUp 0.6s cubic-bezier(0.1, 0.9, 0.9, 1.0) forwards;
+
     @media ${devices.mobileL} {
         padding: 10px;
+    }
+
+    @keyframes popInAndUp {
+        0% {
+            opacity: 0;
+            transform: translate(0, 100px);
+        }
+
+        80% {
+            opacity: 1;
+        }
+    
+        100% {
+            transform: translate(0, 0);
+        }
     }
 `;
     

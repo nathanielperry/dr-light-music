@@ -45,9 +45,9 @@ const Container = styled.div`
     @media ${devices.mobileL} {
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
-        overflow-x: scroll;
-        overflow-y: scroll;
-        width: 90%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 300px;
         height: 80vh;
         padding: 0;
     }
@@ -108,27 +108,17 @@ export default class AlbumsContainer extends React.Component {
         });
     }
 
-    nextAlbumAnchor(text) {
+    albumAnchor(i) {
         const currentAlbum = this.state.currentAlbum;
-        const nextAlbum = (currentAlbum + 1) % albums.length;
+        const nextAlbum = currentAlbum + i < 0 ? albums.length - 1 : (currentAlbum + i) % albums.length;
+
         return (
             <a 
                 href={'#' + albums[nextAlbum].albumAnchor}
-                onClick={() => console.log('boo')}>
-                {text}
-            </a>
-        );
-    }
-    
-    previousAlbumAnchor(text) {
-        const currentAlbum = this.state.currentAlbum;
-        let prevAlbum = currentAlbum - 1;
-        prevAlbum = prevAlbum < 0 ? albums.length - 1 : prevAlbum;
-        return (
-            <a 
-                href={'#' + albums[prevAlbum].albumAnchor}
-                onClick={() => this.setCurrentAlbum(prevAlbum)}>
-                {text}
+                onClick={() => {
+                    this.setCurrentAlbum(nextAlbum);
+                }}>
+                {i === -1 ? '<' : '>'}
             </a>
         );
     }
@@ -136,8 +126,7 @@ export default class AlbumsContainer extends React.Component {
     render() {
         return (
             <Container
-                id='albums-container'
-                onMouseOver={this.props.updateMousePos}>
+                id='albums-container'>
                 {/* <TvScanlines  /> */}
                 <AlbumList>
                     { 
@@ -149,7 +138,8 @@ export default class AlbumsContainer extends React.Component {
                                     albumTitle={album.albumTitle}
                                     albumDescription={album.albumDescription} 
                                     openModal={() => this.props.openModal(album)}
-                                    key={album.albumAnchor}>
+                                    key={album.albumAnchor}
+                                    albumsHoverPercent={this.props.albumsHoverPercent}>
                                 </Album>
                             );
                         })
@@ -157,10 +147,11 @@ export default class AlbumsContainer extends React.Component {
                 </AlbumList>
                 <FixWrapper>
                     <Fix>
-                        {this.previousAlbumAnchor('<')}
-                        {this.nextAlbumAnchor('>')}
+                        {this.albumAnchor(-1)}
+                        {this.albumAnchor(1)}
                     </Fix>
                 </FixWrapper>
+                <div className="swiper-scrollbar"></div>
             </Container>
         )
     }

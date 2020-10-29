@@ -23,7 +23,7 @@ export default class Discography extends React.Component {
         super(props);
         this.state = {
             currentModal: null,
-            albumsHoverX: 0,
+            albumsHoverPercent: 0,
         }
     }
 
@@ -39,13 +39,6 @@ export default class Discography extends React.Component {
         });
     }
 
-    updateMousePos(e) {
-        const rect = document.getElementById('albums-container').getBoundingClientRect();
-        this.setState({
-            albumsHoverX: e.clientX - rect.left,
-        });
-    }
-
     render() {
         return (
             <div>
@@ -53,8 +46,6 @@ export default class Discography extends React.Component {
                 <Layout bgOffset={2880}>
                     <TvSupports />
                     <AlbumsContainer 
-                        updateMousePos={this.updateMousePos.bind(this)}
-                        albumsHoverX={this.state.albumsHoverX} 
                         openModal={this.openModal.bind(this)}/>
                     { this.state.currentModal &&
                         <AlbumModal
