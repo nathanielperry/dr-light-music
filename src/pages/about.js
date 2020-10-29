@@ -44,6 +44,7 @@ const BioText = styled.div`
 `;
 
 const ProfileImage = styled.img`
+    min-width: 225px;
     @media ${devices.mobileL} {
         width: 100%;
     }
