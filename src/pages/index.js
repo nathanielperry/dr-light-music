@@ -67,12 +67,12 @@ export default function Home() {
           <li><StyledLink to="/discography">Albums</StyledLink></li>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><img src="social1.png" alt="Twitter"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social2.png" alt="Soundcloud"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social3.png" alt="Facebook"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social4.png" alt="Spotify"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social5.png" alt="Apple Music"></img></SocialMediaIcon>
-          <SocialMediaIcon><img src="social6.png" alt="Youtube Music"></img></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://twitter.com/drl16ht"><img src="social1.png" alt="Twitter" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://soundcloud.com/drl16ht"><img src="social2.png" alt="Soundcloud" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://www.facebook.com/DrL16hT-132571406873288"><img src="social3.png" alt="Facebook" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><img src="social4.png" alt="Spotify" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://music.apple.com/us/artist/dr-light/526451109"><img src="social5.png" alt="Apple Music" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://music.youtube.com/channel/UCK_OqjYpv8hG_EA-xiR7c7w"><img src="social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
         </SocialMedia>
       </MenuContainer>
     </Layout>

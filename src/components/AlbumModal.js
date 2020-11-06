@@ -193,12 +193,12 @@ export default class AlbumModal extends React.Component {
                                 <p>{this.props.album.albumDescription}</p>
                             </AlbumText>
                             <StreamingLinkList>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming1.png" alt="SoundCloud" /><p>Soundcloud</p></StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming2.png" alt="Spotify" /><p>Spotify</p></StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming3.png" alt="Apple Music" /><p>Apple Music</p></StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming4.png" alt="Youtube Music" /><p>Youtube Music</p></StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming5.png" alt="Pandora" /><p>Pandora</p></StyledLink></StreamingListItem>
-                                <StreamingListItem><StyledLink href="#"><StreamIcon src="streaming6.png" alt="Amazon Music" /><p>Amazon Music</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="https://soundcloud.com/drl16ht"><StreamIcon src="streaming1.png" alt="SoundCloud" /><p>Soundcloud</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><StreamIcon src="streaming2.png" alt="Spotify" /><p>Spotify</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="https://music.apple.com/us/artist/dr-light/526451109"><StreamIcon src="streaming3.png" alt="Apple Music" /><p>Apple Music</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="https://music.youtube.com/channel/UCK_OqjYpv8hG_EA-xiR7c7w"><StreamIcon src="streaming4.png" alt="Youtube Music" /><p>Youtube Music</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="https://www.pandora.com/artist/drlight/ARnmq3tb9gPlkJZ"><StreamIcon src="streaming5.png" alt="Pandora" /><p>Pandora</p></StyledLink></StreamingListItem>
+                                <StreamingListItem><StyledLink href="https://music.amazon.com/artists/B0083NT7GO/dr-light"><StreamIcon src="streaming6.png" alt="Amazon Music" /><p>Amazon Music</p></StyledLink></StreamingListItem>
                             </StreamingLinkList>
                         </InfoPane>
                         <CloseLinkMobile onClick={this.props.handleClose}>Close</CloseLinkMobile>
