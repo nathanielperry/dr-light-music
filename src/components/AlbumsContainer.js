@@ -2,103 +2,113 @@ import React from 'react';
 import styled from 'styled-components';
 import Album from '../components/album';
 import devices from '../styles/devices';
+import motion from 'framer-motion';
 
-const albums = [
-    {
-        albumTitle: 'The Light Hits',
-        albumAnchor: 'the_light_hits',
-        albumArt: 'test.jpg',
-        albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
-    },
-    {
-        albumTitle: 'Phobia',
-        albumAnchor: 'phobia',
-        albumArt: 'phobia.jpg',
-        albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
-    },
-    {
-        albumTitle: 'Triangle of Stars',
-        albumAnchor: 'triangle_of_stars',
-        albumArt: 'test.jpg',
-        albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
-    },
-    {
-        albumTitle: 'CTI',
-        albumAnchor: 'cti',
-        albumArt: 'test.jpg',
-        albumDescription: 'A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.',
-    },
-]
+import { albums } from '../../content/albums.json';
 
 const Container = styled.div`
     position: relative;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     width: 600px;
+    height: 425px;
     margin: auto;
-    padding: 20px;
-    overflow: hidden;
+
+    display: flex;
     
     background: url(scanlines.png) repeat;
     border: 32px double black;
     border-image: url(border.png) 32 repeat;
-    
-    @media ${devices.mobileL} {
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        overflow-x: auto;
-        overflow-y: hidden;
-        width: 300px;
-        height: 80vh;
-        padding: 0;
-    }
 `;
 
 const AlbumList = styled.ul`
     margin: auto;
     padding: 0;
+    width: 100%;
+    height: 425px;
     list-style: none;
     
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-`;
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
 
-const FixWrapper = styled.div`
-    display: none;
-    position: absolute;
-    height: 10px;
-    margin: auto;
-    bottom: 0;
-    margin: auto;
-    width: 100%;
+    --ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: stretch; */
 
     @media ${devices.mobileL} {
-        display: block;
+        padding: 0;
     }
 `;
-    
-const Fix = styled.div`
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    transform: translate(20%, -25px);
-    `;
 
-// const TvScanlines = styled.div`
-//     position: absolute;
-//     pointer-events: none;
-//     width: 100%;
-//     height: 100%;
-//     background: url("scanlines.png");
-//     opacity: 0.3;
-// `;
+
+const AlbumIcons = styled.ul`  
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    padding-top: 10px;
+    width: 85px;
+
+    li {
+        width: 85px;
+        height: 85px;
+        margin-top: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        &:nth-child(1) {
+            margin-top: 0;
+        }
+
+        transition: all 0.2s ease-in-out;
+        background: darkslategrey;
+    }
+
+    .selected {
+        transform: rotateY(180deg);
+        img {
+            animation: flipside 0.4s linear forwards; 
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+
+    @keyframes flipside {
+        49% {
+            opacity: 1;
+        }
+        50%, 100% {
+            opacity: 0;
+        }
+    }
+`;
+
+const TvScanlines = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background: url("scanlines.png");
+    opacity: 0.2;
+    z-index: 1;
+`;
 
 export default class AlbumsContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentAlbum: 0,
+            scroll: 0,
         };
     }
 
@@ -108,9 +118,19 @@ export default class AlbumsContainer extends React.Component {
         });
     }
 
-    albumAnchor(i) {
-        const currentAlbum = this.state.currentAlbum;
-        const nextAlbum = currentAlbum + i < 0 ? albums.length - 1 : (currentAlbum + i) % albums.length;
+    setScroll(index) {
+        this.setState({
+            scroll: index,
+        });
+    }
+    
+    getScrollPosition(e) {
+        return Math.round(e.target.scrollTop / 425);
+    }
+
+    albumAnchor(current) {
+        const nextAlbum = current < 0 ? albums.length - 1 : current % albums.length;
+        console.log('CURRENT: ', current);
 
         return (
             <a 
@@ -118,7 +138,7 @@ export default class AlbumsContainer extends React.Component {
                 onClick={() => {
                     this.setCurrentAlbum(nextAlbum);
                 }}>
-                {i === -1 ? '<' : '>'}
+                #
             </a>
         );
     }
@@ -127,30 +147,33 @@ export default class AlbumsContainer extends React.Component {
         return (
             <Container
                 id='albums-container'>
-                {/* <TvScanlines  /> */}
-                <AlbumList>
+                <TvScanlines />
+                <AlbumIcons>
+                    {
+                        albums.map((album, i) => (
+                            <li className={i === this.state.scroll ? 'selected' : ''}>
+                                <a href={'#' + album.anchor}>
+                                    <img 
+                                        src={'/albumart/' + album.art} 
+                                    />
+                                </a>
+                            </li>
+                        ))
+                    }
+                </AlbumIcons>
+                <AlbumList
+                    onScroll={e => this.setScroll(this.getScrollPosition(e))}>
                     { 
-                        albums.map(album => {
-                            return (
-                                <Album
-                                    albumArt={album.albumArt} 
-                                    albumAnchor={album.albumAnchor}
-                                    albumTitle={album.albumTitle}
-                                    albumDescription={album.albumDescription} 
-                                    openModal={() => this.props.openModal(album)}
-                                    key={album.albumAnchor}
-                                    albumsHoverPercent={this.props.albumsHoverPercent}>
-                                </Album>
-                            );
-                        })
+                        albums.map((album, i) => (
+                            <Album
+                                isVisible={i === this.state.scroll}
+                                album={album}
+                                openModal={() => this.props.openModal(album)}
+                                key={album.albumAnchor}>
+                            </Album>
+                        ))
                     }
                 </AlbumList>
-                <FixWrapper>
-                    <Fix>
-                        {this.albumAnchor(-1)}
-                        {this.albumAnchor(1)}
-                    </Fix>
-                </FixWrapper>
                 <div className="swiper-scrollbar"></div>
             </Container>
         )

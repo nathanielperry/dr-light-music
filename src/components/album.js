@@ -1,77 +1,86 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import devices from '../styles/devices';
 
-const AlbumContainer = styled.li`
-    margin-left: 1rem;
-    padding: 0.7rem;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    flex: 0 0 40%;
+import StreamingLinks from './streamingLinks';
 
-    img {
-        width: 100%;
-        box-shadow: 4px 4px 6px black;
+const AlbumContainer = styled.div`
+    height: 425px;
+    padding: 10px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        "stream album3d"
+        "stream album3d";
+    grid-gap: 10px;
+
+    * {
+        transition: all 0.2s ease-in-out 0.3s;
     }
 
-    @media ${devices.mobileL} {
-        scroll-snap-align: start;
-        height: 70vh;
-        width: 100%;
-        margin-left: 0;
-        flex: 0 0 90%;
+    &.hide > * {
+        opacity: 0;
+    }
+`;
 
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: flex-end;
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 0;
+const Album3D = styled.div`
+    grid-area: album3d;
+`;
 
-        h3 {
-            margin: 5px 0;
-            // margin-left: 10px;
-        }
+const AlbumTitle = styled.h3`
+    margin: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+`;
+
+const TextContainer = styled.div`
+    overflow-y: scroll;
+    grid-area: description;
+
+    //Hide scrollbar
+    --ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
     }
 `;
 
 const AlbumText = styled.p`
-    display: none;
-    margin: 10px 0 30px;
-    overflow: scroll;
-    @media ${devices.mobileL} {
-        display: block;
-    }
+    margin: 0;
 `;
 
-const QuickStreamLinks = styled.button`
-    display: none;
-    margin: 20px 0 10px;
-
-    @media ${devices.mobileL} {
-        display: block;
-    }
+const AlbumArt = styled.img`
+    grid-area: art;
+    width: 100%;
 `;
 
-export default class Album extends React.Component {
-    render() {
-        return (
-            <AlbumContainer
-                id={this.props.albumAnchor}
-                name={this.props.albumAnchor}>
-                <AlbumText>
-                    {this.props.albumDescription}
-                </AlbumText>
-                <QuickStreamLinks onClick={this.props.openModal}>
-                    Listen Now
-                </QuickStreamLinks>
-                <a href={'#' + this.props.albumAnchor} onClick={this.props.openModal}>
-                    <img 
-                        src={`/albumart/${this.props.albumArt}`}
-                        alt='Album Art' />
-                </a>
-                <h3>{this.props.albumTitle}</h3>
-            </AlbumContainer>
-        )
-    }
+const StyledStreamingLinks = styled(StreamingLinks)`
+    grid-area: stream;
+`;
+
+const ListenButton = styled.button`
+    grid-area: button;
+`;
+
+export default function Album(props) {
+    const { openModal, isVisible, album } = props;
+    const { title, anchor, art, tracks, streams } = album;
+
+    return (
+        <AlbumContainer 
+            id={anchor} 
+            name={anchor}
+            className={`${isVisible ? '' : 'hide'}`}>
+            <Album3D>
+                <AlbumTitle>{title}</AlbumTitle>
+                <AlbumArt src={`/albumart/${art}`}alt='Album Art' />
+            </Album3D>
+            <StreamingLinks streams={streams} />
+        </AlbumContainer>
+    )
 }

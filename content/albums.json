@@ -1,0 +1,129 @@
+{
+    "albums": [
+        {
+            "title": "The Light Hits",
+            "anchor": "the_light_hits",
+            "art": "the_light_hits.png",
+            "tracks": [
+                "Planklength",
+                "99",
+                "Please Remember (Me)",
+                "Necco",
+                "Plkin K",
+                "Prettsreal",
+                "Qzk",
+                "Bittersweet Circle",
+                "Shhbyebye",
+                "Omby",
+                "Threefour",
+                "Coombs",
+                "Wartzl"
+            ],
+            "streams": [
+                {
+                    "service": "Spotify",
+                    "url": "https://open.spotify.com/album/2mKvdTndjJ7fHzlzA9FKmq?si=d_lIA2-hRTiOIJZmoaFczw"
+                },
+                {
+                    "service": "Apple Music",
+                    "url": "https://music.apple.com/us/album/the-light-hits/585476041"
+                },
+                {
+                    "service": "Youtube Music",
+                    "url": "https://music.youtube.com/playlist?list=OLAK5uy_lfJawbfDGPBlKI58XV_oM93Y1XpjlShcE"
+                },
+                {
+                    "service": "Amazon Music",
+                    "url": "https://music.amazon.com/albums/B00AL3L2BC"
+                }
+            ]
+        },
+        {
+            "title": "Phobia",
+            "anchor": "phobia",
+            "art": "phobia.jpg",
+            "tracks": [
+                "Peek",
+                "Maybe",
+                "Cloud 5",
+                "Targ",
+                "Paradise - Hedgehog Mix",
+                "6076",
+                "50 Seconds Over P",
+                "Cobratriangle",
+                "Copter",
+                "Copter2",
+                "Memory",
+                "Jexux Juice",
+                "Dreaming About Blue Turtles",
+                "Richard2",
+                "Wrinkle",
+                "Wring (Someone Needs to Cast Holy On That Bitch)",
+                "Wring2 (We've Seen Too Much)",
+                "Makeloveswbass",
+                "Willow",
+                "Float3",
+                "Disalusion",
+                "Ersatz Focalin",
+                "Meteoreyes - Across the Pond - Remix",
+                "Gunfight",
+                "Nosediscussion",
+                "Item-3",
+                "Occam's Razor",
+                "Dr.L Tribute"
+            ],
+            "streams": [
+                {
+                    "service": "Soundcloud",
+                    "url": "https://soundcloud.com/drl16ht/sets/phobia"
+                },
+                {
+                    "service": "Spotify",
+                    "url": "https://open.spotify.com/album/2gJtHCsLLAKFWbd9PeHFzr?si=_ua55fjvTg23fefQsmgCtQ"
+                },
+                {
+                    "service": "Apple Music",
+                    "url": "https://music.apple.com/us/album/phobia/526451028"
+                },
+                {
+                    "service": "Amazon Music",
+                    "url": "https://music.amazon.com/albums/B0083VC4DO"
+                },
+                {
+                    "service": "Pandora",
+                    "url": "https://www.pandora.com/artist/drlight/phobia/ALhPm4rwKZ77lXP"
+                }
+            ]
+        },
+        {
+            "title": "Triangle of Stars",
+            "anchor": "triangle_of_stars",
+            "art": "triangle.jpg",
+            "tracks": [
+                "Blaster",
+                "Culvre and Dr.LighT - Happorary",
+                "DrLight savantbreaks",
+                "MLK",
+                "It's hard to find a good cucumber",
+                "Lecture",
+                "Humpback",
+                "Lullabye",
+                "Mac, Tribute to a hero",
+                "Mr.Kirks Nightmare",
+                "PBG",
+                "Perfect",
+                "Rench",
+                "SYMPOL2",
+                "TELLAH",
+                "Usenews",
+                "WISH44"
+            ],
+            "streams": [
+                {
+                    "service": "Soundcloud",
+                    "url": "https://soundcloud.com/drl16ht/sets/mlk-triangle-of-stars-cti-late"
+                }
+            ]
+        }
+    ]
+}
