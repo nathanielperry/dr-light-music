@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import motion from 'framer-motion';
 import devices from '../styles/devices';
 
 import StreamingLinks from './streamingLinks';
@@ -12,33 +13,14 @@ const AlbumContainer = styled.div`
 
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
 
     scroll-snap-align: start;
-
-    * {
-        transition: opacity 0.2s ease-in-out 0.3s;
-    }
-
-    &.hide > * {
-        opacity: 0;
-    }
-`;
-
-const StyledAlbum3D = styled(Album3D)`
-    width: 50%;
-
-    h3 {
-        margin: 0 0 10px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        text-align: center;
-    }
 `;
 
 const StyledStreamingLinks = styled(StreamingLinks)`
     list-style: none;
-    align-self: start;
+    /* align-self: start; */
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 
@@ -59,11 +41,14 @@ export default function Album({ isVisible, album }) {
         <AlbumContainer 
             id={anchor} 
             name={anchor}
-            className={`${isVisible ? '' : 'hide'}`}>
-            <StyledStreamingLinks streams={streams} />
-            <StyledAlbum3D 
+            isVisible={isVisible}>
+            <StyledStreamingLinks 
+                streams={streams} 
+                isVisible={isVisible}/>
+            <Album3D 
                 title={title}
-                art={art}/>
+                art={art}
+                isVisible={isVisible}/>
         </AlbumContainer>
     )
 }

@@ -130,7 +130,9 @@ export default function AlbumsContainer() {
             <AlbumIcons>
                 {
                     albums.map((album, i) => (
-                        <li className={i === scroll ? 'selected' : ''}>
+                        <li 
+                            className={i === scroll ? 'selected' : ''}
+                            key={album.anchor + '_icon'}>
                             <a href={'#' + album.anchor}>
                                 <img 
                                     src={'/albumart/' + album.art} 
@@ -147,7 +149,7 @@ export default function AlbumsContainer() {
                         <Album
                             isVisible={i === scroll}
                             album={album}
-                            key={album.albumAnchor}>
+                            key={album.anchor}>
                         </Album>
                     ))
                 }
