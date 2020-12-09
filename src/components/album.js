@@ -3,23 +3,21 @@ import styled from 'styled-components';
 import devices from '../styles/devices';
 
 import StreamingLinks from './streamingLinks';
+import Album3D from './Album3D';
 
 const AlbumContainer = styled.div`
     height: 425px;
     padding: 10px;
     box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     scroll-snap-align: start;
 
-    display: grid;
-    grid-template-columns: 50% 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
-        "stream album3d"
-        "stream album3d";
-    grid-gap: 10px;
-
     * {
-        transition: all 0.2s ease-in-out 0.3s;
+        transition: opacity 0.2s ease-in-out 0.3s;
     }
 
     &.hide > * {
@@ -27,48 +25,34 @@ const AlbumContainer = styled.div`
     }
 `;
 
-const Album3D = styled.div`
-    grid-area: album3d;
-`;
+const StyledAlbum3D = styled(Album3D)`
+    width: 50%;
 
-const AlbumTitle = styled.h3`
-    margin: 0;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    text-align: center;
-`;
-
-const TextContainer = styled.div`
-    overflow-y: scroll;
-    grid-area: description;
-
-    //Hide scrollbar
-    --ms-overflow-style: none;
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-        display: none;
+    h3 {
+        margin: 0 0 10px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        text-align: center;
     }
 `;
 
-const AlbumText = styled.p`
-    margin: 0;
-`;
-
-const AlbumArt = styled.img`
-    grid-area: art;
-    width: 100%;
-`;
-
 const StyledStreamingLinks = styled(StreamingLinks)`
-    grid-area: stream;
+    list-style: none;
+    align-self: start;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    a {
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        &:hover {
+            color: cyan;
+        }
+    }
 `;
 
-const ListenButton = styled.button`
-    grid-area: button;
-`;
-
-export default function Album(props) {
-    const { openModal, isVisible, album } = props;
+export default function Album({ isVisible, album }) {
     const { title, anchor, art, tracks, streams } = album;
 
     return (
@@ -76,11 +60,10 @@ export default function Album(props) {
             id={anchor} 
             name={anchor}
             className={`${isVisible ? '' : 'hide'}`}>
-            <Album3D>
-                <AlbumTitle>{title}</AlbumTitle>
-                <AlbumArt src={`/albumart/${art}`}alt='Album Art' />
-            </Album3D>
-            <StreamingLinks streams={streams} />
+            <StyledStreamingLinks streams={streams} />
+            <StyledAlbum3D 
+                title={title}
+                art={art}/>
         </AlbumContainer>
     )
 }

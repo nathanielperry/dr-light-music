@@ -1,6 +1,6 @@
 import React from 'react';                   
 import styled from 'styled-components';
-import Album from '../components/album';
+import Album from './Album';
 import devices from '../styles/devices';
 import motion from 'framer-motion';
 
@@ -8,7 +8,6 @@ import { albums } from '../../content/albums.json';
 
 const Container = styled.div`
     position: relative;
-    /* box-sizing: border-box; */
     width: 600px;
     height: 425px;
     margin: auto;
@@ -27,23 +26,19 @@ const AlbumList = styled.ul`
     height: 425px;
     list-style: none;
     
+    display: flex;
+    flex-direction: column;
+
     scroll-snap-type: y mandatory;
     scroll-snap-stop: always;
     scroll-behavior: smooth;
     overflow-y: scroll;
 
+    //Hide Scroll Bar
     --ms-overflow-style: none;
     scrollbar-width: none;
     ::-webkit-scrollbar {
         display: none;
-    }
-
-    display: flex;
-    flex-direction: column;
-    /* align-items: stretch; */
-
-    @media ${devices.mobileL} {
-        padding: 0;
     }
 `;
 
@@ -103,79 +98,60 @@ const TvScanlines = styled.div`
     z-index: 1;
 `;
 
-export default class AlbumsContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentAlbum: 0,
-            scroll: 0,
-        };
-    }
+function getScrollPosition(e) {
+    return Math.round(e.target.scrollTop / 425);
+}
 
-    setCurrentAlbum(newAlbum) {
-        this.setState({
-            currentAlbum: newAlbum,
-        });
-    }
+function albumAnchor(current, setCurrent) {
+    const nextAlbum = current < 0 ? albums.length - 1 : current % albums.length;
+    console.log('CURRENT: ', current);
 
-    setScroll(index) {
-        this.setState({
-            scroll: index,
-        });
-    }
-    
-    getScrollPosition(e) {
-        return Math.round(e.target.scrollTop / 425);
-    }
+    return (
+        <a 
+            href={'#' + albums[nextAlbum].albumAnchor}
+            onClick={() => {
+                setCurrent(nextAlbum);
+            }}>
+            #
+        </a>
+    );
+}
 
-    albumAnchor(current) {
-        const nextAlbum = current < 0 ? albums.length - 1 : current % albums.length;
-        console.log('CURRENT: ', current);
+export default function AlbumsContainer() {
+    const [ currentAlbum, setCurrentAlbum ] = React.useState(0);
+    const [ scroll, setScroll ] = React.useState(0);
 
-        return (
-            <a 
-                href={'#' + albums[nextAlbum].albumAnchor}
-                onClick={() => {
-                    this.setCurrentAlbum(nextAlbum);
-                }}>
-                #
-            </a>
-        );
-    }
+    const handleScroll = (e) => setScroll(getScrollPosition(e));
 
-    render() {
-        return (
-            <Container
-                id='albums-container'>
-                <TvScanlines />
-                <AlbumIcons>
-                    {
-                        albums.map((album, i) => (
-                            <li className={i === this.state.scroll ? 'selected' : ''}>
-                                <a href={'#' + album.anchor}>
-                                    <img 
-                                        src={'/albumart/' + album.art} 
-                                    />
-                                </a>
-                            </li>
-                        ))
-                    }
-                </AlbumIcons>
-                <AlbumList
-                    onScroll={e => this.setScroll(this.getScrollPosition(e))}>
-                    { 
-                        albums.map((album, i) => (
-                            <Album
-                                isVisible={i === this.state.scroll}
-                                album={album}
-                                openModal={() => this.props.openModal(album)}
-                                key={album.albumAnchor}>
-                            </Album>
-                        ))
-                    }
-                </AlbumList>
-                <div className="swiper-scrollbar"></div>
-            </Container>
-        )
-    }
+    return (
+        <Container
+            id='albums-container'>
+            <TvScanlines />
+            <AlbumIcons>
+                {
+                    albums.map((album, i) => (
+                        <li className={i === scroll ? 'selected' : ''}>
+                            <a href={'#' + album.anchor}>
+                                <img 
+                                    src={'/albumart/' + album.art} 
+                                />
+                            </a>
+                        </li>
+                    ))
+                }
+            </AlbumIcons>
+            <AlbumList
+                onScroll={handleScroll}>
+                { 
+                    albums.map((album, i) => (
+                        <Album
+                            isVisible={i === scroll}
+                            album={album}
+                            key={album.albumAnchor}>
+                        </Album>
+                    ))
+                }
+            </AlbumList>
+        </Container>
+    )
 }

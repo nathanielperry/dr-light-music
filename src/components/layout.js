@@ -24,13 +24,13 @@ const Container = styled.div`
     background-attachment: fixed;
 `;
 
-export default function Layout(props) {
+export default function Layout({ bgOffset, children }) {
     return (
         <OuterContainer
-            bgOffset={props.bgOffset}>
+            bgOffset={bgOffset}>
             <Container
-                bgOffset={props.bgOffset}>
-                {props.children}
+                bgOffset={bgOffset}>
+                {children}
             </Container>
         </OuterContainer>
     )

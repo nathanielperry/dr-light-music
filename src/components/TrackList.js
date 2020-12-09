@@ -1,10 +1,9 @@
 import React from 'react';
 
-export default function TrackList(props) {
-    const { tracks } = props;
+export default function TrackList({ className, tracks }) {
 
     return (
-        <ul>
+        <ul className={className}>
             {
                 tracks.map(track => (
                     <li>{track}</li>
