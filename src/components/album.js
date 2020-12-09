@@ -6,13 +6,13 @@ import StreamingLinks from './streamingLinks';
 import Album3D from './Album3D';
 
 const AlbumContainer = styled.div`
-    height: 425px;
+    min-height: 425px;
     padding: 10px;
     box-sizing: border-box;
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 
     scroll-snap-align: start;
 
