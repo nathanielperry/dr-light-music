@@ -4,23 +4,37 @@ import motion from 'framer-motion';
 import devices from '../styles/devices';
 
 import StreamingLinks from './streamingLinks';
+import OSTextBlitter from './OSTextBlitter';
 import Album3D from './Album3D';
 
 const AlbumContainer = styled.div`
     min-height: 425px;
-    padding: 10px;
+    max-height:425px;
+    padding: 50px 10px;
     box-sizing: border-box;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     scroll-snap-align: start;
+
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas: 
+        "str art"
+        "ost art";
+`;
+
+const StyledOSTextBlitter = styled(OSTextBlitter)`
+    grid-area: ost;
+`;
+
+const StyledAlbum3D = styled(Album3D)`
+    grid-area: art;
 `;
 
 const StyledStreamingLinks = styled(StreamingLinks)`
+    grid-area: str;
+
     list-style: none;
-    /* align-self: start; */
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 
@@ -34,7 +48,7 @@ const StyledStreamingLinks = styled(StreamingLinks)`
     }
 `;
 
-export default function Album({ isVisible, album }) {
+export default function Album({ isVisible, album, className }) {
     const { title, anchor, art, tracks, streams } = album;
 
     return (
@@ -44,11 +58,17 @@ export default function Album({ isVisible, album }) {
             isVisible={isVisible}>
             <StyledStreamingLinks 
                 streams={streams} 
+                isVisible={isVisible}
+                className={className}/>
+            <StyledOSTextBlitter 
+                className={className}
+                tracks={tracks}
                 isVisible={isVisible}/>
-            <Album3D 
+            <StyledAlbum3D 
                 title={title}
                 art={art}
-                isVisible={isVisible}/>
+                isVisible={isVisible}
+                className={className}/>
         </AlbumContainer>
     )
 }

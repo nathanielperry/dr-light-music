@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
 
 const Container = styled.div`
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     &:after {
         content: ' ';
@@ -77,9 +79,9 @@ export default function Album3D({ className, title, art, isVisible }) {
     }, [isVisible]);
 
     return (
-        <Container>
-            <Rotator 
-                className={className}>
+        <Container
+            className={className}>
+            <Rotator>
                 <h3>{title}</h3>
                 <AlbumArt 
                     src={`/albumart/${art}`}

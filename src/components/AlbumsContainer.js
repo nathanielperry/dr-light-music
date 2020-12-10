@@ -45,9 +45,11 @@ const AlbumList = styled.ul`
 
 const AlbumIcons = styled.ul`  
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0;
-    padding: 20px;
-    padding-top: 10px;
+    padding: 10px 20px;
     width: 85px;
 
     li {
@@ -98,6 +100,16 @@ const TvScanlines = styled.div`
     z-index: 1;
 `;
 
+const OSVersion = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+
+    color: #c6eef6;
+    text-shadow: 2px 0 0 black;
+`;
+
 function getScrollPosition(e) {
     return Math.round(e.target.scrollTop / 425);
 }
@@ -121,12 +133,20 @@ export default function AlbumsContainer() {
     const [ currentAlbum, setCurrentAlbum ] = React.useState(0);
     const [ scroll, setScroll ] = React.useState(0);
 
-    const handleScroll = (e) => setScroll(getScrollPosition(e));
+    const handleScroll = (e) => {
+        const classAttr = e.target.className;
+        if (typeof classAttr === 'string' && classAttr.includes('AlbumsContainer__AlbumList')) {
+            setScroll(getScrollPosition(e));
+        }
+    };
 
     return (
         <Container
             id='albums-container'>
             <TvScanlines />
+            <OSVersion>
+                <p>Light OS v. 2.24.18</p>
+            </OSVersion>
             <AlbumIcons>
                 {
                     albums.map((album, i) => (

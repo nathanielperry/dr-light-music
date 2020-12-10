@@ -57,7 +57,7 @@ function streamingListItem(url, icon, text) {
 export default function StreamingLinks({ className, isVisible, streams }) {
     const initial = {
         opacity: 0,
-        y: 40,
+        y: -40,
     };
     const popUp = {
         opacity: 1,
