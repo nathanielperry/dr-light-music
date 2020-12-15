@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     max-height: 100%;
+    max-width: 100%;
     padding: 0;
     color: #c6eef6;
     text-shadow: 2px 0 0 black;

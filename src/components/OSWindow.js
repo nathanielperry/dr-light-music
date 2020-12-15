@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Window = styled.div`
     position: relative;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     padding: 5px;
 `;
@@ -17,7 +17,7 @@ const TitleBar = styled.div`
     padding: 5px 0 5px 5px;
     display: flex;
     justify-content: flex-end;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     border-bottom-left-radius: 8px;
 `;
 

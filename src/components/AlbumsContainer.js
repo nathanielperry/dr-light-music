@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import devices from '../styles/devices';
 import motion from 'framer-motion';
+import technoBabble from '../lib/technobabble/technobabble';
+import _ from 'lodash';
 
 import Album from './Album';
 import AlbumIcons from './AlbumIcons';
 
 import { albums } from '../../content/albums.json';
 import OSTextBlitter from './OSTextBlitter';
+import OSWindow from './OSWindow';
 
 const Container = styled.div`
     position: relative;
@@ -71,9 +74,8 @@ const OSCommandLine = styled(OSTextBlitter)`
     position: absolute;
     height: 75px;
     bottom: 15px;
-    left: 0;
-    padding: 0 20px;
-    width: 100%;
+    left: 20px;                  
+    width: 100%;            
 `;
 
 function getScrollPosition(e) {
@@ -98,8 +100,23 @@ function albumAnchor(current, setCurrent) {
 export default function AlbumsContainer() {
     const [ currentAlbum, setCurrentAlbum ] = React.useState(0);
     const [ scroll, setScroll ] = React.useState(0);
+    const [ commandLines, setCommandLines ] = React.useState([]);
 
-    const OSLines = [...Array(50)].map((item, i) => Date.now());
+    //Build array of technobabble strings
+    React.useEffect(() => {
+        async function fetchWordsArray() {
+            const asyncArray = [...Array(100)].map((item, i) => {
+                return technoBabble.getLineWithWord({
+                    usePrefix: Math.random() > 0.5 ? true : false,
+                    useSuffix: Math.random() > 0.5 ? true : false,
+                    position: ['center', 'start', 'end'][_.random(2)],
+                    length: 60,
+                })
+            });
+            setCommandLines(await Promise.all(asyncArray));
+        }
+        fetchWordsArray();
+    }, []);
 
     const handleScroll = (e) => {
         const classAttr = e.target.className;
@@ -130,8 +147,8 @@ export default function AlbumsContainer() {
                     ))
                 }
             </AlbumList>
-            <OSCommandLine 
-                lines={OSLines} />
+            <OSCommandLine
+                lines={commandLines} />
         </Container>
     )
 }
