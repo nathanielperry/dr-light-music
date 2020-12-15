@@ -1,10 +1,13 @@
 import React from 'react';                   
 import styled from 'styled-components';
-import Album from './Album';
 import devices from '../styles/devices';
 import motion from 'framer-motion';
 
+import Album from './Album';
+import AlbumIcons from './AlbumIcons';
+
 import { albums } from '../../content/albums.json';
+import OSTextBlitter from './OSTextBlitter';
 
 const Container = styled.div`
     position: relative;
@@ -42,52 +45,6 @@ const AlbumList = styled.ul`
     }
 `;
 
-
-const AlbumIcons = styled.ul`  
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-    padding: 10px 20px;
-    width: 85px;
-
-    li {
-        width: 85px;
-        height: 85px;
-        margin-top: 10px;
-        border-radius: 8px;
-        overflow: hidden;
-
-        &:nth-child(1) {
-            margin-top: 0;
-        }
-
-        transition: all 0.2s ease-in-out;
-        background: darkslategrey;
-    }
-
-    .selected {
-        transform: rotateY(180deg);
-        img {
-            animation: flipside 0.4s linear forwards; 
-        }
-    }
-
-    img {
-        width: 100%;
-    }
-
-    @keyframes flipside {
-        49% {
-            opacity: 1;
-        }
-        50%, 100% {
-            opacity: 0;
-        }
-    }
-`;
-
 const TvScanlines = styled.div`
     position: absolute;
     top: 0;
@@ -104,10 +61,19 @@ const OSVersion = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0 20px;
+    padding: 10px 20px;
 
     color: #c6eef6;
     text-shadow: 2px 0 0 black;
+`;
+
+const OSCommandLine = styled(OSTextBlitter)`
+    position: absolute;
+    height: 75px;
+    bottom: 15px;
+    left: 0;
+    padding: 0 20px;
+    width: 100%;
 `;
 
 function getScrollPosition(e) {
@@ -133,6 +99,8 @@ export default function AlbumsContainer() {
     const [ currentAlbum, setCurrentAlbum ] = React.useState(0);
     const [ scroll, setScroll ] = React.useState(0);
 
+    const OSLines = [...Array(50)].map((item, i) => Date.now());
+
     const handleScroll = (e) => {
         const classAttr = e.target.className;
         if (typeof classAttr === 'string' && classAttr.includes('AlbumsContainer__AlbumList')) {
@@ -147,21 +115,9 @@ export default function AlbumsContainer() {
             <OSVersion>
                 <p>Light OS v. 2.24.18</p>
             </OSVersion>
-            <AlbumIcons>
-                {
-                    albums.map((album, i) => (
-                        <li 
-                            className={i === scroll ? 'selected' : ''}
-                            key={album.anchor + '_icon'}>
-                            <a href={'#' + album.anchor}>
-                                <img 
-                                    src={'/albumart/' + album.art} 
-                                />
-                            </a>
-                        </li>
-                    ))
-                }
-            </AlbumIcons>
+            <AlbumIcons
+                scroll={scroll} 
+                albums={albums}/>
             <AlbumList
                 onScroll={handleScroll}>
                 { 
@@ -174,6 +130,8 @@ export default function AlbumsContainer() {
                     ))
                 }
             </AlbumList>
+            <OSCommandLine 
+                lines={OSLines} />
         </Container>
     )
 }

@@ -3,28 +3,34 @@ import styled from 'styled-components';
 import motion from 'framer-motion';
 import devices from '../styles/devices';
 
+import OSWindow from './OSWindow';
 import StreamingLinks from './streamingLinks';
 import OSTextBlitter from './OSTextBlitter';
 import Album3D from './Album3D';
 
 const AlbumContainer = styled.div`
+    height: 425px;
     min-height: 425px;
     max-height:425px;
-    padding: 50px 10px;
+    padding: 50px 20px 0 0;
     box-sizing: border-box;
     scroll-snap-align: start;
 
     display: grid;
-    grid-template-columns: 50% 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr minmax(0, 1fr) 90px;
+    grid-template-columns: 50% 50%;
     grid-gap: 10px;
     grid-template-areas: 
         "str art"
         "ost art";
 `;
 
-const StyledOSTextBlitter = styled(OSTextBlitter)`
+const TextBlitterWindow = styled(OSWindow)`
     grid-area: ost;
+`;
+
+const StreamingLinksWindow = styled(OSWindow)`
+    grid-area: str;
 `;
 
 const StyledAlbum3D = styled(Album3D)`
@@ -32,11 +38,7 @@ const StyledAlbum3D = styled(Album3D)`
 `;
 
 const StyledStreamingLinks = styled(StreamingLinks)`
-    grid-area: str;
-
     list-style: none;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
 
     a {
         color: white;
@@ -51,19 +53,25 @@ const StyledStreamingLinks = styled(StreamingLinks)`
 export default function Album({ isVisible, album, className }) {
     const { title, anchor, art, tracks, streams } = album;
 
+    const tracklist = ['Sequencing...', ...tracks.map((trackname, i) => `${i + 1}. ${trackname}`)];
+
     return (
         <AlbumContainer 
             id={anchor} 
             name={anchor}
             isVisible={isVisible}>
-            <StyledStreamingLinks 
-                streams={streams} 
-                isVisible={isVisible}
-                className={className}/>
-            <StyledOSTextBlitter 
-                className={className}
-                tracks={tracks}
-                isVisible={isVisible}/>
+            <StreamingLinksWindow>
+                <StyledStreamingLinks 
+                    streams={streams} 
+                    isVisible={isVisible}
+                    className={className}/>
+            </StreamingLinksWindow>
+            <TextBlitterWindow>
+                <OSTextBlitter 
+                    className={className}
+                    lines={tracklist}
+                    isVisible={isVisible}/>
+            </TextBlitterWindow>
             <StyledAlbum3D 
                 title={title}
                 art={art}

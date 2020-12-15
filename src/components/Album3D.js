@@ -23,13 +23,13 @@ const Container = styled.div`
 
 const Rotator = styled(motion.div)`
     z-index: 21;
+`;
 
-    h3 {
-        margin: 0 0 10px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        text-align: center;
-    }
+const Title = styled(motion.h3)`
+    margin: 0 0 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    text-align: center;
 `;
 
 const AlbumArt = styled(motion.img)`
@@ -82,7 +82,9 @@ export default function Album3D({ className, title, art, isVisible }) {
         <Container
             className={className}>
             <Rotator>
-                <h3>{title}</h3>
+                <Title>
+                    {title}
+                </Title>
                 <AlbumArt 
                     src={`/albumart/${art}`}
                     alt='Album Art'

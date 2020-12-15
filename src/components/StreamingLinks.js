@@ -14,7 +14,7 @@ const icons = {
 }
 
 const StreamingLinkList = styled(motion.ul)`
-    padding: 10px;
+    padding: 2px 2px 5px;
     display: flex;
     flex-direction: column;
     justify-content: center; 
@@ -38,7 +38,7 @@ const StreamingListItem = styled(motion.li)`
 
 const StreamIcon = styled.img`
     vertical-align: top;
-    margin: 0 10px;
+    margin: 0 5px 0 0;
 `;
 
 function streamingListItem(url, icon, text) {

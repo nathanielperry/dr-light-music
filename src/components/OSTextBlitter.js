@@ -2,39 +2,36 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    height: 120px;
+    max-height: 100%;
     padding: 0;
     color: #c6eef6;
     text-shadow: 2px 0 0 black;
-
     overflow: hidden;
 
     pre {
+        max-height: 100%;
         font-size: 15px;
         line-height: 15px;
+        margin: 0;
     }
 `;
 
-export default function OSTextBlitter({ className, tracks, isVisible }) {
+export default function OSTextBlitter({ className, lines, isVisible }) {
     const [ blitterCount, setBlitterCount ] = useState(0);
     const divRef = useRef(null);
-    const tracklistString = 'Sequencing...\n' + tracks.map((track, i) => `${i + 1}. ${track}`)
-        .join('\n');
+    const linesString = lines.join('\n');
 
     React.useEffect(() => {
         const tick = setInterval(() => {
             divRef.current.scrollTop = divRef.current.scrollHeight;
-            setBlitterCount(Math.min(blitterCount + 1, tracklistString.length));
+            setBlitterCount(Math.min(blitterCount + 1, linesString.length));
         }, 25);
 
         return () => clearInterval(tick);
     });
 
     React.useEffect(() => {
-        console.log('effect');
-        if (isVisible) {
-            setBlitterCount(0);
-        }
+        setBlitterCount(0);
     }, [ isVisible ]);
 
     return (
@@ -42,7 +39,7 @@ export default function OSTextBlitter({ className, tracks, isVisible }) {
             className={className}
             ref={divRef}>
             <pre>
-                { tracklistString.slice(0, blitterCount) }
+                { linesString.slice(0, blitterCount) }
             </pre>
         </Container>
     )
