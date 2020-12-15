@@ -60,13 +60,16 @@ export default function Album({ isVisible, album, className }) {
             id={anchor} 
             name={anchor}
             isVisible={isVisible}>
-            <StreamingLinksWindow>
+            <StreamingLinksWindow
+                canMinimize={true}>
                 <StyledStreamingLinks 
                     streams={streams} 
                     isVisible={isVisible}
                     className={className}/>
             </StreamingLinksWindow>
-            <TextBlitterWindow>
+            <TextBlitterWindow
+                canMinimize={true}
+                canMaximize={true}>
                 <OSTextBlitter 
                     className={className}
                     lines={tracklist}

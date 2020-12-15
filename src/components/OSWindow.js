@@ -14,10 +14,10 @@ const TitleBar = styled.div`
     top: 0;
     right: 0;
     height: 17px;
-    padding: 5px 0 5px 5px;
+    padding: 5px 0 5px 8px;
     display: flex;
     justify-content: flex-end;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     border-bottom-left-radius: 8px;
 `;
 
@@ -36,13 +36,18 @@ const MaxButton = styled(MinButton)`
     background-position-x: -30px;
 `;
 
-export default function OSWindow({ children }) {
+export default function OSWindow({ 
+        canClose = true,
+        canMaximize = false,
+        canMinimize = false,
+        children 
+    }) {
     return (
         <Window>
             <TitleBar>
-                <CloseButton />
-                <MinButton />
-                <MaxButton />
+            { canClose && <CloseButton /> }
+            { canMinimize && <MinButton /> }
+            { canMaximize && <MaxButton /> }
             </TitleBar>
             {children}
         </Window>
