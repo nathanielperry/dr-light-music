@@ -61,7 +61,7 @@ const OSVersion = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px 20px;
+    padding: 0 20px;
 
     color: #c6eef6;
     text-shadow: 2px 0 0 black;
