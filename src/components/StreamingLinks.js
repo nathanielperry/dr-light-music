@@ -34,6 +34,15 @@ const StreamingListItem = styled(motion.li)`
         line-height: 26px;
         display: inline-block;
     }
+
+    @media ${devices.mobileL} {
+        height: 20px;
+
+        p {
+            font-size: 15px;
+            line-height: 26px;
+        }
+    }
 `;
 
 const StreamIcon = styled.img`

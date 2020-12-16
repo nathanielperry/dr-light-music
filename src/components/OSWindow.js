@@ -55,10 +55,12 @@ export default function OSWindow({
         canClose = true,
         canMaximize = false,
         canMinimize = false,
+        className,
         children 
     }) {
     return (
         <Window
+            className={className}
             variants={windowVariants}
             animate={isVisible ? 'reveal' : 'hide'}>
             <TitleBar>

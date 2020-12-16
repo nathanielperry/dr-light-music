@@ -23,13 +23,18 @@ const Container = styled.div`
     background: url(scanlines.png) repeat;
     border: 32px double black;
     border-image: url(border.png) 32 repeat;
+
+    @media ${devices.mobileL} {
+        width: 320px;
+        height: 500px;
+    }
 `;
 
 const AlbumList = styled.ul`
     margin: auto;
     padding: 0;
     width: 100%;
-    height: 425px;
+    height: 500px;
     list-style: none;
     
     display: flex;
@@ -75,7 +80,11 @@ const OSCommandLine = styled(OSTextBlitter)`
     height: 75px;
     bottom: 15px;
     left: 20px;                  
-    width: 100%;            
+    width: 100%;        
+    
+    @media ${devices.mobileL} {
+        display: none;
+    }
 `;
 
 function getScrollPosition(e) {

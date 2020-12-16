@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import devices from '../styles/devices';
 import { motion } from 'framer-motion';
 
 import Scanner from './Scanner';
@@ -11,6 +12,10 @@ const List = styled.ul`
     margin: 0;
     padding: 50px 20px;
     width: 85px;
+
+    @media ${devices.mobileL} {
+        width: 75px;
+    }
 `;
 
 const Item = styled(motion.li)`
@@ -26,6 +31,11 @@ const Item = styled(motion.li)`
     }
 
     background: rgba(0, 0, 0, 0.5);
+
+    @media ${devices.mobileL} {
+        width: 75px;
+        height: 75px;
+    }
 `;
 
 const Image = styled(motion.img)`

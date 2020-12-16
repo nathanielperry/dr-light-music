@@ -8,7 +8,14 @@ import AlbumsContainer from '../components/AlbumsContainer';
 
 const TvSupports = styled.div`
     height: 288px;
-    background: url("tv.png") 50% -192px no-repeat;
+    margin: auto;
+    background: url("tv.png") 50% no-repeat;
+
+    @media ${devices.mobileL} {
+        height: 100px;
+        width: 425px;
+        background-position: 85% 80%;
+    }
 `;
 
 export default function Discography(props) {

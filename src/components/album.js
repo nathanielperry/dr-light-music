@@ -23,10 +23,27 @@ const AlbumContainer = styled.div`
     grid-template-areas: 
         "str art"
         "ost art";
+
+    @media ${devices.mobileL} {
+        height: 500px;
+        min-height: 500px;
+        max-height:500px;
+        padding: 50px 10px 10px 0;
+        
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "art"
+        "str";
+    }
 `;
 
 const TextBlitterWindow = styled(OSWindow)`
     grid-area: ost;
+
+    @media ${devices.mobileL} {
+        display: none;
+    }
 `;
 
 const StreamingLinksWindow = styled(OSWindow)`
@@ -61,14 +78,16 @@ export default function Album({ isVisible, album, className }) {
             name={anchor}
             isVisible={isVisible}>
             <StreamingLinksWindow
+                className={className}
                 isVisible={isVisible}
                 canMinimize={true}>
                 <StyledStreamingLinks 
+                    className={className}
                     streams={streams} 
-                    isVisible={isVisible}
-                    className={className}/>
+                    isVisible={isVisible}/>
             </StreamingLinksWindow>
             <TextBlitterWindow
+                className={className}
                 isVisible={isVisible}
                 canMinimize={true}
                 canMaximize={true}>
