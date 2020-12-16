@@ -5,7 +5,8 @@ const Container = styled.div`
     max-height: 100%;
     max-width: 100%;
     padding: 0;
-    color: #c6eef6;
+    /* color: #c6eef6; */
+    color: white;
     text-shadow: 2px 0 0 black;
     overflow: hidden;
 

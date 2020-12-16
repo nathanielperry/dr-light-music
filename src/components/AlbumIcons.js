@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+import Scanner from './Scanner';
+
 const List = styled.ul`  
     list-style: none;
     display: flex;
@@ -12,6 +14,7 @@ const List = styled.ul`
 `;
 
 const Item = styled(motion.li)`
+    position: relative;
     width: 85px;
     height: 85px;
     margin-top: 10px;
@@ -23,14 +26,10 @@ const Item = styled(motion.li)`
     }
 
     background: rgba(0, 0, 0, 0.5);
-
-    img {
-        width: 100%;
-    }
 `;
 
 const Image = styled(motion.img)`
-
+    width: 100%;    
 `;
 
 export default function AlbumIcons({ scroll, albums }) {
@@ -50,6 +49,9 @@ export default function AlbumIcons({ scroll, albums }) {
                             className={i === scroll ? 'selected' : ''}
                             key={album.anchor + '_icon'}
                             >
+                            { i === scroll &&
+                                <Scanner />
+                            }
                             <a href={'#' + album.anchor}>
                                 <Image 
                                     src={'/albumart/' + album.art} 
