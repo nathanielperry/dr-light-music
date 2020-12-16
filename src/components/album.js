@@ -61,6 +61,7 @@ export default function Album({ isVisible, album, className }) {
             name={anchor}
             isVisible={isVisible}>
             <StreamingLinksWindow
+                isVisible={isVisible}
                 canMinimize={true}>
                 <StyledStreamingLinks 
                     streams={streams} 
@@ -68,6 +69,7 @@ export default function Album({ isVisible, album, className }) {
                     className={className}/>
             </StreamingLinksWindow>
             <TextBlitterWindow
+                isVisible={isVisible}
                 canMinimize={true}
                 canMaximize={true}>
                 <OSTextBlitter 

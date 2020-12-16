@@ -55,26 +55,9 @@ function streamingListItem(url, icon, text) {
 }
 
 export default function StreamingLinks({ className, isVisible, streams }) {
-    const initial = {
-        opacity: 0,
-        y: -40,
-    };
-    const popUp = {
-        opacity: 1,
-        y: 0,
-    };
-
     return (
         <StreamingLinkList
-            className={className}
-            initial={initial}
-            transition={{
-                duration: 0.2,
-                delay: 0.2,
-                damping: 4,
-                delayChildren: 0.2,
-            }}
-            animate={isVisible ? popUp : initial}>
+            className={className}>
             {
                 streams.map(stream => ( 
                     streamingListItem(stream.url, icons[stream.service], stream.service)

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const Window = styled.div`
+const Window = styled(motion.div)`
     position: relative;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
@@ -36,14 +36,31 @@ const MaxButton = styled(MinButton)`
     background-position-x: -30px;
 `;
 
-export default function OSWindow({ 
+const windowVariants = {
+    reveal: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.4,
+        },
+    },
+    hide: {
+        opacity: 0,
+        y: '100%',
+    }
+}
+
+export default function OSWindow({
+        isVisible, 
         canClose = true,
         canMaximize = false,
         canMinimize = false,
         children 
     }) {
     return (
-        <Window>
+        <Window
+            variants={windowVariants}
+            animate={isVisible ? 'reveal' : 'hide'}>
             <TitleBar>
             { canClose && <CloseButton /> }
             { canMinimize && <MinButton /> }
