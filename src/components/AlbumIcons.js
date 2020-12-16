@@ -15,6 +15,7 @@ const List = styled.ul`
 
     @media ${devices.mobileL} {
         width: 75px;
+        padding: 50px 10px;
     }
 `;
 
