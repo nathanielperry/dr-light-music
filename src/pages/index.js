@@ -39,9 +39,7 @@ const SocialMediaIcon = styled.li`
   align-items: center;
 `;
 
-const NavLi = styled(motion.li)`
-
-`;
+const NavLi = styled(motion.li)``;
 
 const StyledLink = styled(TransitionLink)`
   font-size: 1.5em;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import devices from '../styles/devices';
 
 const Container = styled.div`
@@ -10,25 +11,26 @@ const Container = styled.div`
     align-items: flex-end;
 `;
 
-const TitleImage = styled.img`
+const TitleImage = styled(motion.img)`
     position: fixed;
-    z-index: ${props => 30 + props.pos};
+    filter: saturate(0) brightness(0);
+    animation: phaseIn 5s 2s linear forwards;
 
     @media ${devices.mobileL} {
         width: 90vw;
     }
-`;
-
-const TitleFader = styled(TitleImage)`
-    animation: ${props => (Math.abs(props.pos - 4)) * 1.2}s ease-out 1.2s phaseIn forwards;
 
     @keyframes phaseIn {
         0% {
-            opacity: 1;
+            filter: contrast(0) saturate(0) brightness(0);
         }
 
+        50% {
+            filter: contrast(0) saturate(0) brightness(200%);
+        }
+        
         100% {
-            opacity: 0;
+            filter: none;
         }
     }
 `;
@@ -36,9 +38,8 @@ const TitleFader = styled(TitleImage)`
 export default function Title(props) {
     return (
         <Container>
-            <TitleFader pos={3} src='title-black.png'></TitleFader>
-            <TitleFader pos={2} src='title-white.png'></TitleFader>
-            <TitleImage pos={1} src='title.png'></TitleImage>
+            <TitleImage 
+                src='title.png'/>
         </Container>
     )
 }
