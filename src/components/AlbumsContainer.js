@@ -19,6 +19,7 @@ const Container = styled.div`
     margin: auto;
 
     display: flex;
+    overflow: hidden;
     
     background: url(scanlines.png) repeat;
     border: 32px double black;
@@ -34,7 +35,7 @@ const AlbumList = styled.ul`
     margin: auto;
     padding: 0;
     width: 100%;
-    height: 500px;
+    height: 425px;
     list-style: none;
     
     display: flex;
@@ -50,6 +51,10 @@ const AlbumList = styled.ul`
     scrollbar-width: none;
     ::-webkit-scrollbar {
         display: none;
+    }
+
+    @media ${devices.mobileL} {
+        height: 500px;
     }
 `;
 
