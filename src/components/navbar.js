@@ -3,21 +3,13 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import devices from '../styles/devices';
 
-const NavContainer = styled.nav`
+const Container = styled.div`
     position: fixed;
     width: 100%;
     height: 80px;
-    padding-left: 2em;
-    
-    background: black;
-    opacity: 0.8;
-    text-shadow: black 2px 2px;
+    background: rgba(0, 0, 0, 0.8);
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    animation: slideDown 2s cubic-bezier(0, 0.9, 0.9, 1.0);
+    animation: slideDown 1s cubic-bezier(0, 0.7, 0.7, 1.0);
 
     @keyframes slideDown {
         0% {
@@ -28,6 +20,18 @@ const NavContainer = styled.nav`
             top: 0;
         }
     }
+`;
+
+const NavContainer = styled.nav`
+    max-width: 800px;
+    height: 80px;
+    margin: auto;
+    opacity: 0.8;
+    text-shadow: black 2px 2px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const NavUl = styled.ul`
@@ -54,12 +58,14 @@ const StyledLink = styled(Link)`
 
 export default function Navbar() {
     return (
-        <NavContainer>
-            <StyledLink to="/"><h1>Dr. Light</h1></StyledLink>
-            <NavUl>
-                <NavLi><StyledLink to="/about">Bio</StyledLink></NavLi>
-                <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
-            </NavUl>
-        </NavContainer>
+        <Container>
+            <NavContainer>
+                <StyledLink to="/"><h1>Dr. Light</h1></StyledLink>
+                <NavUl>
+                    <NavLi><StyledLink to="/about">Bio</StyledLink></NavLi>
+                    <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
+                </NavUl>
+            </NavContainer>
+        </Container>
     )
 }
