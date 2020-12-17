@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
+import { motion } from 'framer-motion';
 import devices from '../styles/devices';
 
 const Container = styled.div`
@@ -41,7 +42,7 @@ const NavUl = styled.ul`
     padding-right: 4em;
 `;
 
-const NavLi = styled.li`
+const NavLi = styled(motion.li)`
     margin-left: 1rem;
 `;
 
@@ -56,14 +57,30 @@ const StyledLink = styled(Link)`
     }
 `;
 
+const whileHover = {
+    y: '-10%',
+}
+
 export default function Navbar() {
     return (
         <Container>
             <NavContainer>
-                <StyledLink to="/"><h1>Dr. Light</h1></StyledLink>
+                <StyledLink to="/"><motion.h1 whileHover={whileHover}>Dr. Light</motion.h1></StyledLink>
                 <NavUl>
-                    <NavLi><StyledLink to="/about">Bio</StyledLink></NavLi>
-                    <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
+                    <NavLi
+                        whileHover={whileHover}>
+                        <StyledLink 
+                            to="/about">
+                            Bio
+                        </StyledLink>
+                    </NavLi>
+                    <NavLi
+                        whileHover={whileHover}>
+                        <StyledLink 
+                            to="/discography">
+                            Albums
+                        </StyledLink>
+                    </NavLi>
                 </NavUl>
             </NavContainer>
         </Container>
