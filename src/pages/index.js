@@ -1,6 +1,7 @@
 import React from 'react';
 import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Layout from '../components/layout';
 
 import devices from '../styles/devices';
@@ -38,10 +39,25 @@ const SocialMediaIcon = styled.li`
   align-items: center;
 `;
 
+const NavLi = styled(motion.li)`
+
+`;
+
 const StyledLink = styled(TransitionLink)`
   font-size: 1.5em;
   color: #efefef;
   text-decoration: none;
+
+  &::before {
+    content: '>';
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
 `;
 
 const MenuContainer = styled.div`
@@ -63,8 +79,8 @@ export default function Home() {
       <Title />
       <MenuContainer>
         <StartMenu>
-          <li><StyledLink to="/about">Bio</StyledLink></li>
-          <li><StyledLink to="/discography">Albums</StyledLink></li>
+          <NavLi><StyledLink to="/about">Bio</StyledLink></NavLi>
+          <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
         </StartMenu>
         <SocialMedia>
           <SocialMediaIcon><a href="https://twitter.com/drl16ht"><img src="social1.png" alt="Twitter" /></a></SocialMediaIcon>
