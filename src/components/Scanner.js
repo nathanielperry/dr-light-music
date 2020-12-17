@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import devices from '../styles/devices';
 
 const Container = styled(motion.div)`
     position: absolute;
@@ -18,6 +19,15 @@ const Container = styled(motion.div)`
     p {
         font-size: 12px;
         margin: 0;
+    }
+
+    @media ${devices.mobileL} {
+        height: 75px;
+        width: 75px;
+
+        p {
+            font-size: 10px;
+        }
     }
 `;
 
