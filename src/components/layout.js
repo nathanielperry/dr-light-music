@@ -5,9 +5,9 @@ import devices from '../styles/devices';
 
 const OuterContainer = styled.div`
     width: 100%;
-    height: 100vh;
     background: url("sides.png");
     background-position: center -${props => props.bgOffset}px;
+    background-attachment: fixed;
     
     @media ${devices.mobileL} {
         background-position: center -${props => props.bgOffset -100}px;
