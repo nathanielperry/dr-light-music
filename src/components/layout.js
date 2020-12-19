@@ -13,7 +13,7 @@ const OuterContainer = styled.div`
         background-position: center -${props => props.bgOffset -100}px;
         background-size: 80%;
     }
-    `;
+`;
     
     const Container = styled.div`
     width: 100%;

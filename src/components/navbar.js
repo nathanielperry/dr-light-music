@@ -9,6 +9,7 @@ const Container = styled.div`
     width: 100%;
     height: 80px;
     background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
 
     animation: slideDown 1s cubic-bezier(0, 0.7, 0.7, 1.0);
 
