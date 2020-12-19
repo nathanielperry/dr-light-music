@@ -15,10 +15,12 @@ const OuterContainer = styled.div`
     }
     `;
     
-const Container = styled.div`
+    const Container = styled.div`
     width: 100%;
     min-height: 100vh;
     margin: 0;
+    padding-bottom: 50px;
+    box-sizing: border-box;
     background: url("bg.png") no-repeat;
     background-position: center -${props => props.bgOffset}px;
     background-attachment: fixed;
