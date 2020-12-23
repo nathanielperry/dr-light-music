@@ -84,8 +84,8 @@ const OSCommandLine = styled(OSTextBlitter)`
     position: absolute;
     height: 75px;
     bottom: 15px;
-    left: 20px;                  
-    width: 100%;        
+    left: 125px;                  
+    width: 475px;        
     
     @media ${devices.mobileL} {
         display: none;
@@ -124,7 +124,7 @@ export default function AlbumsContainer() {
                     usePrefix: Math.random() > 0.5 ? true : false,
                     useSuffix: Math.random() > 0.5 ? true : false,
                     position: ['center', 'start', 'end'][_.random(2)],
-                    length: 60,
+                    length: 50,
                 })
             });
             setCommandLines(await Promise.all(asyncArray));
