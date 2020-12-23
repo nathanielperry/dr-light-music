@@ -4,7 +4,7 @@ import motion from 'framer-motion';
 import devices from '../styles/devices';
 
 import OSWindow from './OSWindow';
-import StreamingLinks from './streamingLinks';
+import StreamingLinks from './StreamingLinks';
 import OSTextBlitter from './OSTextBlitter';
 import Album3D from './Album3D';
 

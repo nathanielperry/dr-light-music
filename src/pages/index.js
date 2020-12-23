@@ -2,11 +2,12 @@ import React from 'react';
 import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Layout from '../components/layout';
+
+import Layout from '../components/Layout';
+import Title from '../components/Title';
 
 import devices from '../styles/devices';
 
-import Title from '../components/title';
 
 //Silkscreen font by Jason Kottke
 //License: https://www.fontsquirrel.com/license/Silkscreen
