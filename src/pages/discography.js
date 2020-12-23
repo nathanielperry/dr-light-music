@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
+import SEO from '../components/seo';
 
 import devices from '../styles/devices';
 import AlbumsContainer from '../components/AlbumsContainer';
@@ -20,12 +21,13 @@ const TvSupports = styled.div`
 
 export default function Discography(props) {
     return (
-        <div>
+        <>
+            <SEO title='Discography' />
             <Navbar></Navbar>
             <Layout bgOffset={2880}>
                 <TvSupports />
                 <AlbumsContainer />
             </Layout>
-        </div>
+        </>
     )
 }

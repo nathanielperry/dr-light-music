@@ -6,7 +6,13 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: `Dr. Light Music`,
+    description: ``,
+    author: ``,
+  },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-transition-link',
   ],

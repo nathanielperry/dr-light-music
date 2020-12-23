@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
+import SEO from '../components/seo';
 
 import devices from '../styles/devices';
 
@@ -53,6 +54,7 @@ const ProfileImage = styled.img`
 export default function About() {
     return (
         <Layout bgOffset={0}>
+            <SEO title='Bio' />
             <Navbar></Navbar>
             <Container>
                 <BioContainer>

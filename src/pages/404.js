@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
+import SEO from '../components/seo';
 
 import devices from '../styles/devices';
 
@@ -23,6 +24,7 @@ const Title = styled.h1`
 export default function FourOhFour() {
   return (
     <Layout bgOffset={960}>
+      <SEO title='404' />
       <Title><img src="title.png" alt="dr. light" /></Title>
       <p>This page does not exist.</p>  
     </Layout>
