@@ -49,7 +49,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
             property: `og:image`,
-            content: 'ogimage.png',
+            content: 'https://www.drlight.tech/ogimage.png',
         },
         {
           property: `og:type`,
