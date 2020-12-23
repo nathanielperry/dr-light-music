@@ -76,7 +76,7 @@ const MenuContainer = styled.div`
 export default function Home() {
   return (
     <Layout bgOffset={960}>
-      <SEO title='Home' />
+      <SEO title='Dr. Light Music' />
       <Title />
       <MenuContainer>
         <StartMenu>
@@ -84,7 +84,7 @@ export default function Home() {
           <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><a href="https://twitter.com/drl16ht"><img src="social1.png" alt="Twitter" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://twitter.com/drl16h"><img src="social1.png" alt="Twitter" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://soundcloud.com/drl16ht"><img src="social2.png" alt="Soundcloud" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://www.facebook.com/DrL16hT-132571406873288"><img src="social3.png" alt="Facebook" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><img src="social4.png" alt="Spotify" /></a></SocialMediaIcon>

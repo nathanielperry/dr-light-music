@@ -22,7 +22,7 @@ const TvSupports = styled.div`
 export default function Discography(props) {
     return (
         <>
-            <SEO title='Discography' />
+            <SEO title='Dr. Light Music | Discography' />
             <Navbar></Navbar>
             <Layout bgOffset={2880}>
                 <TvSupports />

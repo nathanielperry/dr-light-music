@@ -34,7 +34,6 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -42,11 +41,15 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: title ? title : defaultTitle,
         },
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+            property: `og:image`,
+            content: 'ogimage.png',
         },
         {
           property: `og:type`,

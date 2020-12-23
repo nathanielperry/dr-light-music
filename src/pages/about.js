@@ -54,7 +54,7 @@ const ProfileImage = styled.img`
 export default function About() {
     return (
         <Layout bgOffset={0}>
-            <SEO title='Bio' />
+            <SEO title='Dr. Light Music | Bio' />
             <Navbar></Navbar>
             <Container>
                 <BioContainer>
