@@ -21,7 +21,7 @@ const OuterContainer = styled.div`
     margin: 0;
     padding-bottom: 50px;
     box-sizing: border-box;
-    background: url("bg.png") no-repeat;
+    background: url("images/bg.png") no-repeat;
     background-position: center -${props => props.bgOffset}px;
     background-attachment: fixed;
 
