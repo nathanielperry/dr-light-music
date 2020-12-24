@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
+import Img from 'gatsby-image';
 
 const Container = styled.div`
     display: flex;
@@ -32,12 +33,14 @@ const Title = styled(motion.h3)`
     text-align: center;
 `;
 
-const AlbumArt = styled(motion.img)`
-    width: 100%;
-    box-shadow: 5px 0 0 black;
+const AlbumArtContainer = styled(motion.div)`
+    img {
+        box-shadow: 5px 0 0 black;
+        width: 100%;
+    }
 `;
 
-export default function Album3D({ className, title, art, isVisible }) {
+export default function Album3D({ className, title, albumImg, isVisible }) {
     const initialRotate = -45;
     const endRotate = -25;
     const variants = {
@@ -85,12 +88,14 @@ export default function Album3D({ className, title, art, isVisible }) {
                 <Title>
                     {title}
                 </Title>
-                <AlbumArt 
-                    src={`/albumart/${art}`}
-                    alt='Album Art'
+                <AlbumArtContainer
                     initial="hidden"
                     animate={sequence}
-                    variants={variants}/>
+                    variants={variants}>
+                    <Img
+                        alt='Album Art'
+                        fluid={albumImg}/>
+                </AlbumArtContainer>
             </Rotator>
         </Container>
     )

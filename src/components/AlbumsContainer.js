@@ -1,16 +1,12 @@
-import React from 'react';                   
+import React from 'react';            
 import styled from 'styled-components';
 import devices from '../styles/devices';
-import motion from 'framer-motion';
 import technoBabble from '../lib/technobabble/technobabble';
 import _ from 'lodash';
 
 import Album from './Album';
 import AlbumIcons from './AlbumIcons';
-
-import { albums } from '../../content/albums.json';
 import OSTextBlitter from './OSTextBlitter';
-import OSWindow from './OSWindow';
 
 const Container = styled.div`
     position: relative;
@@ -96,23 +92,7 @@ function getScrollPosition(e) {
     return Math.round(e.target.scrollTop / 425);
 }
 
-function albumAnchor(current, setCurrent) {
-    const nextAlbum = current < 0 ? albums.length - 1 : current % albums.length;
-    console.log('CURRENT: ', current);
-
-    return (
-        <a 
-            href={'#' + albums[nextAlbum].albumAnchor}
-            onClick={() => {
-                setCurrent(nextAlbum);
-            }}>
-            #
-        </a>
-    );
-}
-
-export default function AlbumsContainer() {
-    const [ currentAlbum, setCurrentAlbum ] = React.useState(0);
+export default function AlbumsContainer({ albums }) {
     const [ scroll, setScroll ] = React.useState(0);
     const [ commandLines, setCommandLines ] = React.useState([]);
 
@@ -124,7 +104,7 @@ export default function AlbumsContainer() {
                     usePrefix: Math.random() > 0.5 ? true : false,
                     useSuffix: Math.random() > 0.5 ? true : false,
                     position: ['center', 'start', 'end'][_.random(2)],
-                    length: 50,
+                    length: 46,
                 })
             });
             setCommandLines(await Promise.all(asyncArray));

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import motion from 'framer-motion';
 import devices from '../styles/devices';
 
 import OSWindow from './OSWindow';
@@ -68,7 +67,7 @@ const StyledStreamingLinks = styled(StreamingLinks)`
 `;
 
 export default function Album({ isVisible, album, className }) {
-    const { title, anchor, art, tracks, streams } = album;
+    const { title, anchor, tracks, streams } = album;
 
     const tracklist = ['Sequencing...', ...tracks.map((trackname, i) => `${i + 1}. ${trackname}`)];
 
@@ -98,7 +97,7 @@ export default function Album({ isVisible, album, className }) {
             </TextBlitterWindow>
             <StyledAlbum3D 
                 title={title}
-                art={art}
+                albumImg={album.albumImg}
                 isVisible={isVisible}
                 className={className}/>
         </AlbumContainer>

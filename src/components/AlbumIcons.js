@@ -4,6 +4,7 @@ import devices from '../styles/devices';
 import { motion } from 'framer-motion';
 
 import Scanner from './Scanner';
+import Img from 'gatsby-image';
 
 const List = styled.ul`  
     list-style: none;
@@ -39,8 +40,10 @@ const Item = styled(motion.li)`
     }
 `;
 
-const Image = styled(motion.img)`
-    width: 100%;    
+const ImageContainer = styled(motion.div)`
+    img {
+        width: 100%;    
+    }
 `;
 
 export default function AlbumIcons({ scroll, albums }) {
@@ -64,14 +67,17 @@ export default function AlbumIcons({ scroll, albums }) {
                                 <Scanner />
                             }
                             <a href={'#' + album.anchor}>
-                                <Image 
+                                <ImageContainer 
                                     src={'/albumart/' + album.art} 
                                     animate={i === scroll ? selectedAnimation : initial}
                                     initial={initial}
                                     transition={{
                                         duration: 0.1,
                                         delay: 0.1,
-                                    }}/>
+                                    }}>
+                                    <Img
+                                        fluid={album.albumImg}/>
+                                </ImageContainer>
                             </a>
                         </Item>
                     ))

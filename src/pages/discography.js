@@ -1,10 +1,13 @@
 import React from 'react';                   
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
+
+import { albums } from '../../content/albums.json';
+import devices from '../styles/devices';
+
+import SEO from '../components/seo';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
-import SEO from '../components/seo';
-
-import devices from '../styles/devices';
 import AlbumsContainer from '../components/AlbumsContainer';
 
 const TvSupports = styled.div`
@@ -19,15 +22,50 @@ const TvSupports = styled.div`
     }
 `;
 
-export default function Discography(props) {
+const Discography = ({ data }) => {
+    let seededAlbums = albums.map(album => {
+        return {
+            ...album,
+            albumImg: data[album.anchor].childImageSharp.fluid,
+        }
+    });
+
     return (
         <>
             <SEO title='Dr. Light Music | Discography' />
             <Navbar></Navbar>
             <Layout bgOffset={2880}>
                 <TvSupports />
-                <AlbumsContainer />
+                <AlbumsContainer 
+                    albums={seededAlbums}/>
             </Layout>
         </>
     )
 }
+
+export default Discography;
+
+export const fluidImage = graphql`
+    fragment fluidImage on File {
+        childImageSharp {
+            fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+            }
+        }
+    }
+`;
+
+//TODO: Generate query dynamically from album json data
+export const pageQuery = graphql`
+    query {
+        phobia: file(relativePath: {eq: "album_phobia.jpg"}) {
+            ...fluidImage
+        }
+        the_light_hits: file(relativePath: {eq: "album_the_light_hits.png"}) {
+            ...fluidImage
+        }
+        triangle_of_stars: file(relativePath: {eq: "album_triangle.jpg"}) {
+            ...fluidImage
+        }
+    }
+`;
