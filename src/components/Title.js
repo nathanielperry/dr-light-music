@@ -39,7 +39,7 @@ export default function Title(props) {
     return (
         <Container>
             <TitleImage 
-                src='title.png'/>
+                src='/title.png'/>
         </Container>
     )
 }

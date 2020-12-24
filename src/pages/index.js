@@ -84,12 +84,12 @@ export default function Home() {
           <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><a href="https://twitter.com/drl16h"><img src="social1.png" alt="Twitter" /></a></SocialMediaIcon>
-          <SocialMediaIcon><a href="https://soundcloud.com/drl16ht"><img src="social2.png" alt="Soundcloud" /></a></SocialMediaIcon>
-          <SocialMediaIcon><a href="https://www.facebook.com/erik.neumann.9"><img src="social3.png" alt="Facebook" /></a></SocialMediaIcon>
-          <SocialMediaIcon><a href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><img src="social4.png" alt="Spotify" /></a></SocialMediaIcon>
-          <SocialMediaIcon><a href="https://music.apple.com/us/artist/dr-light/526451109"><img src="social5.png" alt="Apple Music" /></a></SocialMediaIcon>
-          <SocialMediaIcon><a href="https://www.youtube.com/user/DrLight9"><img src="social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://twitter.com/drl16h"><img src="/social1.png" alt="Twitter" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://soundcloud.com/drl16ht"><img src="/social2.png" alt="Soundcloud" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://www.facebook.com/erik.neumann.9"><img src="/social3.png" alt="Facebook" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><img src="/social4.png" alt="Spotify" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://music.apple.com/us/artist/dr-light/526451109"><img src="/social5.png" alt="Apple Music" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://www.youtube.com/user/DrLight9"><img src="/social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
         </SocialMedia>
       </MenuContainer>
     </Layout>

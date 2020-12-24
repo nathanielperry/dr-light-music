@@ -13,7 +13,7 @@ import AlbumsContainer from '../components/AlbumsContainer';
 const TvSupports = styled.div`
     height: 288px;
     margin: auto;
-    background: url("tv.png") 50% no-repeat;
+    background: url("/tv.png") 50% no-repeat;
 
     @media ${devices.mobileL} {
         height: 100px;

@@ -17,9 +17,9 @@ const Container = styled.div`
     display: flex;
     overflow: hidden;
     
-    background: url(scanlines.png) repeat;
+    background: url("/scanlines.png") repeat;
     border: 32px double black;
-    border-image: url(border.png) 32 repeat;
+    border-image: url("/border.png") 32 repeat;
 
     @media ${devices.mobileL} {
         width: 320px;
@@ -61,7 +61,7 @@ const TvScanlines = styled.div`
     pointer-events: none;
     width: 100%;
     height: 100%;
-    background: url("scanlines.png");
+    background: url("/scanlines.png");
     opacity: 0.2;
     z-index: 1;
 `;

@@ -25,7 +25,7 @@ const MinButton = styled.div`
     width: 15px;
     height: 15px;
     margin-right: 6px;
-    background: url('buttons.png') top left;
+    background: url('/buttons.png') top left;
 `;
 
 const CloseButton = styled(MinButton)`

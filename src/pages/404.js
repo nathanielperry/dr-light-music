@@ -25,7 +25,7 @@ export default function FourOhFour() {
   return (
     <Layout bgOffset={960}>
       <SEO title='404' />
-      <Title><img src="title.png" alt="dr. light" /></Title>
+      <Title><img src="/title.png" alt="dr. light" /></Title>
       <p>This page does not exist.</p>  
     </Layout>
   )

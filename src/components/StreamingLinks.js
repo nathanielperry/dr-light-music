@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import devices from '../styles/devices';
 
 const icons = {
-    'Soundcloud': "streaming1.png",
-    'Spotify': "streaming2.png",
-    'Apple Music': "streaming3.png",
-    'Youtube Music': "streaming4.png",
-    'Pandora': "streaming5.png",
-    'Amazon Music': "streaming6.png",
+    'Soundcloud': "/streaming1.png",
+    'Spotify': "/streaming2.png",
+    'Apple Music': "/streaming3.png",
+    'Youtube Music': "/streaming4.png",
+    'Pandora': "/streaming5.png",
+    'Amazon Music': "/streaming6.png",
 }
 
 const StreamingLinkList = styled(motion.ul)`
