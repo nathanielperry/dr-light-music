@@ -24,6 +24,10 @@ const OuterContainer = styled.div`
     background: url("bg.png") no-repeat;
     background-position: center -${props => props.bgOffset}px;
     background-attachment: fixed;
+
+    @media ${devices.mobileL} {
+        padding-bottom: 0;
+    }
 `;
 
 export default function Layout({ bgOffset, children }) {

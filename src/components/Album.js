@@ -10,7 +10,7 @@ import Album3D from './Album3D';
 const AlbumContainer = styled.div`
     height: 425px;
     min-height: 425px;
-    max-height:425px;
+    max-height: 425px;
     padding: 50px 20px 0 0;
     box-sizing: border-box;
     scroll-snap-align: start;
@@ -27,7 +27,7 @@ const AlbumContainer = styled.div`
         height: 500px;
         min-height: 500px;
         max-height:500px;
-        padding: 50px 10px 10px 0;
+        padding: 10px 10px 10px 0;
         
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr;
