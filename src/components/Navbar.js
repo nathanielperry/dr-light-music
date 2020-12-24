@@ -34,6 +34,8 @@ const NavContainer = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+
 `;
 
 const NavUl = styled.ul`
@@ -54,6 +56,7 @@ const StyledLink = styled(Link)`
     h1 {
         @media ${devices.mobileL} {
             font-size: 1.4rem;
+            padding-left: 1rem;
         }
     }
 `;
