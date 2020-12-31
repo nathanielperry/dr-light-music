@@ -60,8 +60,8 @@ export default function About() {
                 <BioContainer>
                     <ProfileImage src="https://source.unsplash.com/random/200x225" alt="Bearded Man" />
                     <BioText>
-                        <p>A frog is any member of a diverse and largely carnivorous group of short-bodied, tailless amphibians composing the order Anura (literally without tail in Ancient Greek). The oldest fossil "proto-frog" appeared in the early Triassic of Madagascar, but molecular clock dating suggests their origins may extend further back to the Permian, 265 million years ago.</p>
-                        <p>Frogs are widely distributed, ranging from the tropics to subarctic regions, but the greatest concentration of species diversity is in tropical rainforests. There are over 6,300 recorded species, accounting for around 88% of extant amphibian species. They are also one of the five most diverse vertebrate orders. Warty frog species tend to be called toads, but the distinction between frogs and toads is informal, not from taxonomy or evolutionary history.</p>
+                        <p>The illustrious Drlight began teaching himself how to make music from childhood and has never stopped. Early on it was, his father's singing in a successful band, and large record collection that got him started, as did the music  from his video games. Attending and playing at different rave parties in the 1990's, launched DrLight into the direction of the music style known at the time as IDM. The raw, pretty melodies he chooses compliment the aggressive beats and samples he composes.</p>
+                        <p>"I aim to make masterpieces."</p>
                     </BioText>
                 </BioContainer>
             </Container>
