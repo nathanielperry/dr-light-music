@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
 import SEO from '../components/seo';
-
+import { graphql } from 'gatsby';
 import devices from '../styles/devices';
 
 const Container = styled.div`
@@ -51,20 +51,50 @@ const ProfileImage = styled.img`
     }
 `;
 
-export default function About() {
+const SetupImage = styled.img`
+    @media ${devices.mobileL} {
+        width: 100%;
+    }
+`;
+
+export default function About({ data }) {
+    const images = {
+        profile: data.allImageSharp.edges.find(edge => edge.node.fluid.originalName === 'profile.jpg'),
+        setup: data.allImageSharp.edges.find(edge => edge.node.fluid.originalName === 'setup.jpg'),
+    }
+
+    console.log(images);
+
     return (
         <Layout bgOffset={0}>
             <SEO title='Dr. Light Music | Bio' />
             <Navbar></Navbar>
             <Container>
                 <BioContainer>
-                    <ProfileImage src="https://source.unsplash.com/random/200x225" alt="Bearded Man" />
+                    <ProfileImage src={images.profile.node.fluid.src} alt="Bearded Man" />
                     <BioText>
                         <p>The illustrious Drlight began teaching himself how to make music from childhood and has never stopped. Early on it was, his father's singing in a successful band, and large record collection that got him started, as did the music  from his video games. Attending and playing at different rave parties in the 1990's, launched DrLight into the direction of the music style known at the time as IDM. The raw, pretty melodies he chooses compliment the aggressive beats and samples he composes.</p>
                         <p>"I aim to make masterpieces."</p>
+                        <SetupImage src={images.setup.node.fluid.src} alt="electronic keyboard and mixing stations" />
                     </BioText>
                 </BioContainer>
             </Container>
         </Layout>
     )
 }
+
+export const bioImageQuery = graphql`
+    query {
+        allImageSharp {
+            edges {
+                node {
+                    fluid(maxWidth: 500) {
+                        src
+                        originalName
+                    }
+                }
+            }
+        }
+    }
+  
+`;
