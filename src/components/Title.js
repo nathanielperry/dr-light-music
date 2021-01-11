@@ -14,7 +14,7 @@ const Container = styled.div`
 const TitleImage = styled(motion.img)`
     position: fixed;
     filter: saturate(0) brightness(0);
-    animation: phaseIn 5s 2s linear forwards;
+    animation: phaseIn 3s 1s linear forwards;
 
     @media ${devices.mobileL} {
         width: 90vw;
