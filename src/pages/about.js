@@ -7,14 +7,17 @@ import { graphql } from 'gatsby';
 import devices from '../styles/devices';
 
 const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 100%;
+    width: 800px;
+    margin: auto;
+    padding: 8rem 0 0;
+
+    @media ${devices.tablet} {
+        width: 80%;
+    }
 `;
 
 const BioContainer = styled.div`
     display: flex;
-    padding: 8em 0;
     margin: auto;
     width: 80%;
     max-width: 600px;
@@ -45,13 +48,16 @@ const BioText = styled.div`
 `;
 
 const ProfileImage = styled.img`
-    min-width: 225px;
+    width: 250px;
     @media ${devices.mobileL} {
         width: 100%;
     }
 `;
 
 const SetupImage = styled.img`
+    display: block;
+    width: 550px;
+    margin: auto;
     @media ${devices.mobileL} {
         width: 100%;
     }
@@ -75,9 +81,9 @@ export default function About({ data }) {
                     <BioText>
                         <p>The illustrious Drlight began teaching himself how to make music from childhood and has never stopped. Early on it was, his father's singing in a successful band, and large record collection that got him started, as did the music  from his video games. Attending and playing at different rave parties in the 1990's, launched DrLight into the direction of the music style known at the time as IDM. The raw, pretty melodies he chooses compliment the aggressive beats and samples he composes.</p>
                         <p>"I aim to make masterpieces."</p>
-                        <SetupImage src={images.setup.node.fluid.src} alt="electronic keyboard and mixing stations" />
                     </BioText>
                 </BioContainer>
+                <SetupImage src={images.setup.node.fluid.src} alt="electronic keyboard and mixing stations" />
             </Container>
         </Layout>
     )
