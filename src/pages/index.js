@@ -84,7 +84,7 @@ export default function Home() {
           <NavLi><StyledLink to="/discography">Albums</StyledLink></NavLi>
         </StartMenu>
         <SocialMedia>
-          <SocialMediaIcon><a href="https://twitter.com/drl16h"><img src="/social1.png" alt="Twitter" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://www.pandora.com/artist/drlight/ARnmq3tb9gPlkJZ"><img src="/social1.png" alt="Pandora" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://soundcloud.com/drl16ht"><img src="/social2.png" alt="Soundcloud" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://www.facebook.com/DrL16hT"><img src="/social3.png" alt="Facebook" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><img src="/social4.png" alt="Spotify" /></a></SocialMediaIcon>
