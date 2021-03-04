@@ -79,7 +79,7 @@ export default function About({ data }) {
                 <BioContainer>
                     <ProfileImage src={images.profile.node.fluid.src} alt="Bearded Man" />
                     <BioText>
-                        <p>The illustrious Drlight began teaching himself how to make music from childhood and has never stopped. Early on it was, his father being in a successful band, and large record collection that got him started, as did the music from his video games. Attending and performing at different rave parties in the 1990's, launched DrLight into the direction of the music style known at the time as IDM.</p>
+                        <p> The illustrious Drlight began teaching himself how to make music from childhood and has never stopped. Early on it was, his father being in a successful band, and large record collection that got him started, as did the music from his video games and toy keyboards. Attending and performing at different rave parties in the 1990's, launched DrLight into the direction of the music style known at the time as IDM.</p>
                         <p>"I aim to make masterpieces."</p>
                     </BioText>
                 </BioContainer>
