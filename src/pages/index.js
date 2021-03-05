@@ -89,7 +89,7 @@ export default function Home() {
           <SocialMediaIcon><a href="https://www.facebook.com/DrL16hT"><img src="/social3.png" alt="Facebook" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://open.spotify.com/artist/5kajdsPmWCrCiAAlOs1Uzh"><img src="/social4.png" alt="Spotify" /></a></SocialMediaIcon>
           <SocialMediaIcon><a href="https://music.apple.com/us/artist/dr-light/526451109"><img src="/social5.png" alt="Apple Music" /></a></SocialMediaIcon>
-          <SocialMediaIcon><a href="https://www.youtube.com/user/DrLight9"><img src="/social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
+          <SocialMediaIcon><a href="https://music.youtube.com/channel/UCK_OqjYpv8hG_EA-xiR7c7w"><img src="/social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
         </SocialMedia>
       </MenuContainer>
     </Layout>
