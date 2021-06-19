@@ -4,24 +4,12 @@ import styled, { withTheme } from 'styled-components';
 import { motion } from 'framer-motion';
 import devices from '../styles/devices';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
     position: fixed;
     width: 100%;
     height: 80px;
     background: rgba(0, 0, 0, 0.8);
     z-index: 1000;
-
-    animation: slideDown 1s cubic-bezier(0, 0.7, 0.7, 1.0);
-
-    @keyframes slideDown {
-        0% {
-            top: -80px;
-        }
-
-        100% {
-            top: 0;
-        }
-    }
 `;
 
 const NavContainer = styled.nav`
@@ -67,7 +55,11 @@ const whileHover = {
 
 export default function Navbar() {
     return (
-        <Container>
+        <Container
+            initial={{opacity: 0, y: -80}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: -80}}
+        >
             <NavContainer>
                 <StyledLink to="/"><motion.h1 whileHover={whileHover}>Dr. Light</motion.h1></StyledLink>
                 <NavUl>

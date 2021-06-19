@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import SEO from '../components/seo';
-import Layout from '../components/Layout';
 import Title from '../components/Title';
 
 import devices from '../styles/devices';
@@ -73,9 +72,9 @@ const MenuContainer = styled.div`
   }
 `;
 
-export default function Home() {
+const Home = () => {
   return (
-    <Layout bgOffset={960}>
+    <>
       <SEO title='Dr. Light Music' />
       <Title />
       <MenuContainer>
@@ -92,6 +91,8 @@ export default function Home() {
           <SocialMediaIcon><a href="https://music.youtube.com/channel/UCK_OqjYpv8hG_EA-xiR7c7w"><img src="/social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
         </SocialMedia>
       </MenuContainer>
-    </Layout>
+    </>
   )
 }
+
+export default Home;

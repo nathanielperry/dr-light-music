@@ -63,7 +63,7 @@ const SetupImage = styled.img`
     }
 `;
 
-export default function About({ data }) {
+const  About = ({ data }) => {
     const images = {
         profile: data.allImageSharp.edges.find(edge => edge.node.fluid.originalName === 'profile.jpg'),
         setup: data.allImageSharp.edges.find(edge => edge.node.fluid.originalName === 'setup.jpg'),
@@ -72,9 +72,8 @@ export default function About({ data }) {
     console.log(images);
 
     return (
-        <Layout bgOffset={0}>
+        <>
             <SEO title='Dr. Light Music | Bio' />
-            <Navbar></Navbar>
             <Container>
                 <BioContainer>
                     <ProfileImage src={images.profile.node.fluid.src} alt="Bearded Man" />
@@ -85,9 +84,11 @@ export default function About({ data }) {
                 </BioContainer>
                 <SetupImage src={images.setup.node.fluid.src} alt="electronic keyboard and mixing stations" />
             </Container>
-        </Layout>
+        </>
     )
 }
+
+export default About;
 
 export const bioImageQuery = graphql`
     query {

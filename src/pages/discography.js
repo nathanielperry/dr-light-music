@@ -6,8 +6,6 @@ import { albums } from '../../content/albums.json';
 import devices from '../styles/devices';
 
 import SEO from '../components/seo';
-import Layout from '../components/Layout';
-import Navbar from '../components/Navbar';
 import AlbumsContainer from '../components/AlbumsContainer';
 
 const TvSupports = styled.div`
@@ -33,12 +31,11 @@ const Discography = ({ data }) => {
     return (
         <>
             <SEO title='Dr. Light Music | Discography' />
-            <Navbar></Navbar>
-            <Layout bgOffset={2880}>
+            <>
                 <TvSupports />
                 <AlbumsContainer 
                     albums={seededAlbums}/>
-            </Layout>
+            </>
         </>
     )
 }
