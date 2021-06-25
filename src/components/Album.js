@@ -9,11 +9,12 @@ import Album3D from './Album3D';
 
 const AlbumContainer = styled.div`
     height: 425px;
+    width: 100%;
     min-height: 425px;
     max-height: 425px;
     padding: 50px 20px 0 0;
+
     box-sizing: border-box;
-    scroll-snap-align: start;
 
     display: grid;
     grid-template-rows: 1fr minmax(0, 1fr) 90px;
@@ -66,7 +67,7 @@ const StyledStreamingLinks = styled(StreamingLinks)`
     }
 `;
 
-export default function Album({ isVisible, album, className }) {
+export default function Album({ album, className }) {
     const { title, anchor, tracks, streams } = album;
 
     const tracklist = ['Sequencing...', ...tracks.map((trackname, i) => `${i + 1}. ${trackname}`)];
@@ -74,31 +75,25 @@ export default function Album({ isVisible, album, className }) {
     return (
         <AlbumContainer 
             id={anchor} 
-            name={anchor}
-            isVisible={isVisible}>
+            name={anchor}>
             <StreamingLinksWindow
                 className={className}
-                isVisible={isVisible}
                 canMinimize={true}>
                 <StyledStreamingLinks 
                     className={className}
-                    streams={streams} 
-                    isVisible={isVisible}/>
+                    streams={streams}/>
             </StreamingLinksWindow>
             <TextBlitterWindow
                 className={className}
-                isVisible={isVisible}
                 canMinimize={true}
                 canMaximize={true}>
                 <OSTextBlitter 
                     className={className}
-                    lines={tracklist}
-                    isVisible={isVisible}/>
+                    lines={tracklist}/>
             </TextBlitterWindow>
-            <StyledAlbum3D 
+            <StyledAlbum3D
                 title={title}
                 albumImg={album.albumImg}
-                isVisible={isVisible}
                 className={className}/>
         </AlbumContainer>
     )

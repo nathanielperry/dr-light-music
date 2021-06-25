@@ -40,7 +40,7 @@ const AlbumArtContainer = styled(motion.div)`
     }
 `;
 
-export default function Album3D({ className, title, albumImg, isVisible }) {
+export default function Album3D({ className, title, albumImg }) {
     const initialRotate = -45;
     const endRotate = -25;
     const variants = {
@@ -71,15 +71,11 @@ export default function Album3D({ className, title, albumImg, isVisible }) {
     const sequence = useAnimation();
 
     React.useEffect(() => {
-        if (isVisible) {
-            sequence.start("reveal")
-            .then(() => {
-                sequence.start("idle");
-            });
-        } else {
-            sequence.start("hidden");
-        }
-    }, [isVisible]);
+        sequence.start("reveal")
+        .then(() => {
+            sequence.start("idle");
+        });
+    }, []);
 
     return (
         <Container

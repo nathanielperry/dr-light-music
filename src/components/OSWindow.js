@@ -36,22 +36,7 @@ const MaxButton = styled(MinButton)`
     background-position-x: -30px;
 `;
 
-const windowVariants = {
-    reveal: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.4,
-        },
-    },
-    hide: {
-        opacity: 0,
-        y: '100%',
-    }
-}
-
 export default function OSWindow({
-        isVisible, 
         canClose = true,
         canMaximize = false,
         canMinimize = false,
@@ -61,8 +46,9 @@ export default function OSWindow({
     return (
         <Window
             className={className}
-            variants={windowVariants}
-            animate={isVisible ? 'reveal' : 'hide'}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}>
             <TitleBar>
             { canClose && <CloseButton /> }
             { canMinimize && <MinButton /> }

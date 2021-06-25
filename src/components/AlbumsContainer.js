@@ -92,8 +92,7 @@ function getScrollPosition(e) {
     return Math.round(e.target.scrollTop / 425);
 }
 
-export default function AlbumsContainer({ albums }) {
-    const [ scroll, setScroll ] = React.useState(0);
+export default function AlbumsContainer({ albums, hash }) {
     const [ commandLines, setCommandLines ] = React.useState([]);
 
     //Build array of technobabble strings
@@ -112,11 +111,11 @@ export default function AlbumsContainer({ albums }) {
         fetchWordsArray();
     }, []);
 
-    const handleScroll = (e) => {
-        const classAttr = e.target.className;
-        if (typeof classAttr === 'string' && classAttr.includes('AlbumsContainer__AlbumList')) {
-            setScroll(getScrollPosition(e));
-        }
+    const renderAlbum = (hash)  => {
+        const albumAnchor = hash.replace(/#/, "");
+        const album = albums.find(a => a.anchor === albumAnchor);
+
+        return album ? <Album key={album.anchor} album={album} /> : '';
     };
 
     return (
@@ -127,20 +126,11 @@ export default function AlbumsContainer({ albums }) {
                 <p>Light OS v. 2.24.18</p>
             </OSVersion>
             <AlbumIcons
-                scroll={scroll} 
+                hash={hash} 
                 albums={albums}/>
-            <AlbumList
-                onScroll={handleScroll}>
-                { 
-                    albums.map((album, i) => (
-                        <Album
-                            isVisible={i === scroll}
-                            album={album}
-                            key={album.anchor}>
-                        </Album>
-                    ))
-                }
-            </AlbumList>
+            {
+                renderAlbum(hash)
+            }
             <OSCommandLine
                 lines={commandLines} />
         </Container>

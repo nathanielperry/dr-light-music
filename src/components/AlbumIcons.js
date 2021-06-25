@@ -46,7 +46,11 @@ const ImageContainer = styled(motion.div)`
     }
 `;
 
-export default function AlbumIcons({ scroll, albums }) {
+const isCurrent = (hash, album) => {
+    return album.anchor === hash.replace(/#/, '');
+}
+
+export default function AlbumIcons({ hash, albums }) {
     const initial = {
         scaleY: 1,
     }
@@ -60,16 +64,16 @@ export default function AlbumIcons({ scroll, albums }) {
             {
                     albums.map((album, i) => (
                         <Item 
-                            className={i === scroll ? 'selected' : ''}
+                            className={isCurrent(hash, album) ? 'selected' : ''}
                             key={album.anchor + '_icon'}
                             >
-                            { i === scroll &&
+                            { isCurrent(hash, album) &&
                                 <Scanner />
                             }
                             <a href={'#' + album.anchor}>
                                 <ImageContainer 
                                     src={'/albumart/' + album.art} 
-                                    animate={i === scroll ? selectedAnimation : initial}
+                                    animate={isCurrent(hash, album) ? selectedAnimation : initial}
                                     initial={initial}
                                     transition={{
                                         duration: 0.1,

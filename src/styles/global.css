@@ -4,6 +4,11 @@ html {
     font-family: 'silkscreen';
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 pre {
     font-family: 'silkscreen';
     white-space: pre-wrap;       /* css-3 */

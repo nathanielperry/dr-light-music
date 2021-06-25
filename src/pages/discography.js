@@ -8,19 +8,11 @@ import devices from '../styles/devices';
 import SEO from '../components/seo';
 import AlbumsContainer from '../components/AlbumsContainer';
 
-const TvSupports = styled.div`
-    height: 288px;
-    margin: auto;
-    background: url("/tv.png") 50% no-repeat;
-
-    @media ${devices.mobileL} {
-        height: 100px;
-        width: 425px;
-        background-position: 85% 80%;
-    }
+const Container = styled.div`
+    margin-top: 225px;
 `;
 
-const Discography = ({ data }) => {
+const Discography = ({ data, location }) => {
     let seededAlbums = albums.map(album => {
         return {
             ...album,
@@ -31,11 +23,11 @@ const Discography = ({ data }) => {
     return (
         <>
             <SEO title='Dr. Light Music | Discography' />
-            <>
-                <TvSupports />
-                <AlbumsContainer 
-                    albums={seededAlbums}/>
-            </>
+            <Container>
+                <AlbumsContainer
+                    albums={seededAlbums}
+                    hash={location.hash}/>
+            </Container>
         </>
     )
 }
@@ -52,7 +44,6 @@ export const fluidImage = graphql`
     }
 `;
 
-//TODO: Generate query dynamically from album json data
 export const pageQuery = graphql`
     query {
         phobia: file(relativePath: {eq: "album_phobia.jpg"}) {
