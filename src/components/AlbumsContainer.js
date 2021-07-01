@@ -16,6 +16,7 @@ const Container = styled.div`
 
     display: flex;
     overflow: hidden;
+    flex-direction: column;
     
     background: url("/scanlines.png") repeat;
     border: 32px double black;
@@ -27,31 +28,8 @@ const Container = styled.div`
     }
 `;
 
-const AlbumList = styled.ul`
-    margin: auto;
-    padding: 0;
-    width: 100%;
-    height: 425px;
-    list-style: none;
-    
+const Row = styled.div`
     display: flex;
-    flex-direction: column;
-
-    scroll-snap-type: y mandatory;
-    scroll-snap-stop: always;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-
-    //Hide Scroll Bar
-    --ms-overflow-style: none;
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-        display: none;
-    }
-
-    @media ${devices.mobileL} {
-        height: 500px;
-    }
 `;
 
 const TvScanlines = styled.div`
@@ -77,20 +55,15 @@ const OSVersion = styled.div`
 `;
 
 const OSCommandLine = styled(OSTextBlitter)`
-    position: absolute;
-    height: 75px;
-    bottom: 15px;
-    left: 125px;                  
-    width: 475px;        
-    
+    overflow: hidden;
+    margin-top: auto;
+    line-height: 5px;
+    height: 60px;
+
     @media ${devices.mobileL} {
         display: none;
     }
 `;
-
-function getScrollPosition(e) {
-    return Math.round(e.target.scrollTop / 425);
-}
 
 export default function AlbumsContainer({ albums, hash }) {
     const [ commandLines, setCommandLines ] = React.useState([]);
@@ -103,7 +76,7 @@ export default function AlbumsContainer({ albums, hash }) {
                     usePrefix: Math.random() > 0.5 ? true : false,
                     useSuffix: Math.random() > 0.5 ? true : false,
                     position: ['center', 'start', 'end'][_.random(2)],
-                    length: 46,
+                    length: 65,
                 })
             });
             setCommandLines(await Promise.all(asyncArray));
@@ -122,15 +95,17 @@ export default function AlbumsContainer({ albums, hash }) {
         <Container
             id='albums-container'>
             <TvScanlines />
-            <OSVersion>
-                <p>Light OS v. 2.24.18</p>
-            </OSVersion>
-            <AlbumIcons
-                hash={hash} 
-                albums={albums}/>
-            {
-                renderAlbum(hash)
-            }
+            <Row>
+                <OSVersion>
+                    <p>Light OS v. 2.24.18</p>
+                </OSVersion>
+                <AlbumIcons
+                    hash={hash} 
+                    albums={albums}/>
+                {   
+                    renderAlbum(hash)
+                }
+            </Row>
             <OSCommandLine
                 lines={commandLines} />
         </Container>

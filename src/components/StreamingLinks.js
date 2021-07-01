@@ -14,15 +14,16 @@ const icons = {
 }
 
 const StreamingLinkList = styled(motion.ul)`
-    padding: 2px 2px 5px;
+    margin: 0;
     display: flex;
+    padding: 0 2px 0;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
 `;
 
 const StreamingListItem = styled(motion.li)`
     height: 26px;
-    margin-top: 10px;
+    margin-top: 5px;
     
     &:nth-child(1) {
         margin-top: 0;

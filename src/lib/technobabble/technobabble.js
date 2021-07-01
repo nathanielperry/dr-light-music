@@ -9,7 +9,7 @@ async function getWord(options = {}) {
     _.defaults(options, {
         usePrefix: true,
         useSuffix: false,
-        useDashes: true,
+        useDashes: false,
     });
 
     const words = await getWordsList();

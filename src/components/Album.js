@@ -8,16 +8,13 @@ import OSTextBlitter from './OSTextBlitter';
 import Album3D from './Album3D';
 
 const AlbumContainer = styled.div`
-    height: 425px;
     width: 100%;
-    min-height: 425px;
-    max-height: 425px;
+    height: 325px;
     padding: 50px 20px 0 0;
-
     box-sizing: border-box;
 
     display: grid;
-    grid-template-rows: 1fr minmax(0, 1fr) 90px;
+    grid-template-rows: 1fr minmax(0, 1fr);
     grid-template-columns: 50% 50%;
     grid-gap: 10px;
     grid-template-areas: 
