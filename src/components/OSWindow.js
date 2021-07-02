@@ -7,6 +7,7 @@ const Window = styled(motion.div)`
     background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     padding: 5px;
+    overflow: ${({overflow}) => overflow ? 'visible' : 'hidden'};
 `;
 
 const TitleBar = styled.div`
@@ -41,6 +42,7 @@ export default function OSWindow({
         canMaximize = false,
         canMinimize = false,
         className,
+        overflow = false,
         children 
     }) {
     return (
@@ -48,11 +50,12 @@ export default function OSWindow({
             className={className}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}>
+            transition={{ duration: 0.4 }}
+            $overflow={overflow}>
             <TitleBar>
-            { canClose && <CloseButton /> }
-            { canMinimize && <MinButton /> }
-            { canMaximize && <MaxButton /> }
+                { canClose && <CloseButton /> }
+                { canMinimize && <MinButton /> }
+                { canMaximize && <MaxButton /> }
             </TitleBar>
             {children}
         </Window>

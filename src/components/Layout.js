@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import devices from '../styles/devices';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 import Navbar from '../components/Navbar';
 import FadeWrapper from '../components/FadeWrapper';
@@ -54,29 +54,30 @@ export default function Layout({ children, path }) {
             setTimeout(() => {setIsScrolling(false)}, SCROLL_TIME * 1000);
         }
         setInitialScroll(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [path]);
     
     return (
         <OuterContainer
             scroll={pathScrollMap[path]}>
-            <Container
-                scroll={pathScrollMap[path]}>
-                <AnimatePresence exitBeforeEnter>
-                    {
-                        path != '/' &&
-                        <Navbar
-                            key="Navbar"
-                        />
-                    }
+            <AnimatePresence exitBeforeEnter>
+                <Container
+                    scroll={pathScrollMap[path]}>
+                        {
+                            path !== '/' &&
+                            <Navbar
+                                key="Navbar"
+                            />
+                        }
 
-                    { !isScrolling &&
-                        <FadeWrapper
-                            key={path}>
-                            {children}
-                        </FadeWrapper>
-                    }
-                </AnimatePresence>
-            </Container>
+                        { !isScrolling &&
+                            <FadeWrapper
+                                key={path}>
+                                {children}
+                            </FadeWrapper>
+                        }
+                </Container>
+            </AnimatePresence>
         </OuterContainer>
     )
 }

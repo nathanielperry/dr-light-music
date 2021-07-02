@@ -75,7 +75,8 @@ export default function Album({ album, className }) {
             name={anchor}>
             <StreamingLinksWindow
                 className={className}
-                canMinimize={true}>
+                canMinimize={true}
+                overflow={true}>
                 <StyledStreamingLinks 
                     className={className}
                     streams={streams}/>

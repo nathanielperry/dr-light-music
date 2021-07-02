@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import devices from '../styles/devices';
 import technoBabble from '../lib/technobabble/technobabble';
-import _ from 'lodash';
 
 import Album from './Album';
 import AlbumIcons from './AlbumIcons';
@@ -57,8 +56,8 @@ const OSVersion = styled.div`
 const OSCommandLine = styled(OSTextBlitter)`
     overflow: hidden;
     margin-top: auto;
-    line-height: 5px;
-    height: 60px;
+    height: 75px;
+    background: rgba(0, 0, 0, 0.2);
 
     @media ${devices.mobileL} {
         display: none;
@@ -68,20 +67,16 @@ const OSCommandLine = styled(OSTextBlitter)`
 export default function AlbumsContainer({ albums, hash }) {
     const [ commandLines, setCommandLines ] = React.useState([]);
 
-    //Build array of technobabble strings
+    //Add new technobabble word every X seconds
     React.useEffect(() => {
-        async function fetchWordsArray() {
-            const asyncArray = [...Array(100)].map((item, i) => {
-                return technoBabble.getLineWithWord({
-                    usePrefix: Math.random() > 0.5 ? true : false,
-                    useSuffix: Math.random() > 0.5 ? true : false,
-                    position: ['center', 'start', 'end'][_.random(2)],
-                    length: 65,
-                })
-            });
-            setCommandLines(await Promise.all(asyncArray));
+        async function addNewTechWord() {
+            const newVerb = await technoBabble.getVerb();
+            const newWord = await technoBabble.getWord();
+
+            setCommandLines(oldLines => [...oldLines, `${newVerb} ${newWord}...`]);
+            setTimeout(() => addNewTechWord(), 1000 * (Math.floor(Math.random() * 4)));
         }
-        fetchWordsArray();
+        addNewTechWord();
     }, []);
 
     const renderAlbum = (hash)  => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import devices from '../styles/devices';
 

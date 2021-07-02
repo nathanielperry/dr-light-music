@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { albums } from '../../content/albums.json';
-import devices from '../styles/devices';
 
 import SEO from '../components/seo';
 import AlbumsContainer from '../components/AlbumsContainer';

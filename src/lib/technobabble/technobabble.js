@@ -1,8 +1,30 @@
 import * as _ from 'lodash';
+import { capitalize } from 'lodash';
+
+let words;
 
 async function getWordsList() {
-    const response = await fetch('words.json');
-    return await response.json();
+    let response;
+    if (!words) {
+        response = await fetch('words.json');
+        words = await response.json();
+    }
+
+    return words;
+}
+
+async function getVerb(options = {}) {
+    _.defaults(options, {
+        capitalize: true,
+    });
+
+    const words = await getWordsList();
+    let verb = words.verb[_.random(words.verb.length - 1)];
+    if (capitalize) {
+        verb = verb[0].toUpperCase() + verb.slice(1);
+    }
+
+    return verb;
 }
 
 async function getWord(options = {}) {
@@ -46,6 +68,7 @@ async function getLineWithWord(options = {}) {
 }
 
 export default {
+    getVerb,
     getWord,
     getLine,
     getLineWithWord,

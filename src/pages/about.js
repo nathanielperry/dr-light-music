@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
-import Navbar from '../components/Navbar';
 import SEO from '../components/seo';
 import { graphql } from 'gatsby';
 import devices from '../styles/devices';

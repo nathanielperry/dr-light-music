@@ -60,10 +60,16 @@ function getRandomPercent() {
 export default function Scanner() {
     const [ bars, setBars ] = React.useState([25, 50, 50, 25]);
     const barsRef = React.useRef(bars);
+
     React.useEffect(() => {
+        let isMounted = true; //Flag to prevent state update after unmounting.
         setTimeout(() => {
-            setBars(barsRef.current.map(bar => getRandomPercent()));
+            if (isMounted) { //Only setBars is still mounted.
+                setBars(barsRef.current.map(bar => getRandomPercent()));
+            }
         }, Math.floor((500 * (getRandomPercent()/100))));
+
+        return () => isMounted = false; //Set flag to false on unmount
     }, [bars]);
 
     return (

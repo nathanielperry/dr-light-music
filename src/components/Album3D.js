@@ -75,6 +75,7 @@ export default function Album3D({ className, title, albumImg }) {
         .then(() => {
             sequence.start("idle");
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
