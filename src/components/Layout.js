@@ -11,11 +11,11 @@ const SCROLL_TIME = 1.6;
 const OuterContainer = styled.div`
     width: 100%;
     background: url("/sides.png");
-    background-position: center -${props => props.scroll}px;
+    background-position: center -${props => props.scroll ? props.scroll : 960}px;
     background-attachment: fixed;
     
     @media ${devices.mobileL} {
-        background-position: center -${props => props.scroll -100}px;
+        background-position: center -${props => props.scroll ? props.scroll -100 : 860 }px;
         background-size: 80%;
     }
 
@@ -28,11 +28,12 @@ const Container = styled.div`
     margin: 0;
     box-sizing: border-box;
     background: url("/images/bg.png") no-repeat;
-    background-position: center -${props => props.scroll}px;
+    background-position: center -${props => props.scroll ? props.scroll : 960}px;
     background-attachment: fixed;
 
     @media ${devices.mobileL} {
         padding-bottom: 0;
+        background-position: center -${props => props.scroll ? props.scroll -100 : 860 }px;
     }
 
     transition: background-position ${SCROLL_TIME}s ease-in-out;
@@ -43,7 +44,7 @@ export default function Layout({ children, path }) {
     const [initialScroll, setInitialScroll] = React.useState(false);
     
     const pathScrollMap = {
-        '/about/': 0,
+        '/about/': 1,
         '/': 960,
         '/discography/': 2880,
     }
