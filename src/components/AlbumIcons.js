@@ -14,7 +14,6 @@ const List = styled(motion.ul)`
     margin: 0 auto;
 
     @media ${devices.mobileL} {
-        width: 75px;
         padding: 50px 10px;
     }
 `;
@@ -25,13 +24,24 @@ const ItemContainer = styled(motion.div)`
         margin-top: 0;
     }
 
-    display: flex;
+
+    a {
+        display: flex;
+        color: white;
+        font-size: 1.2rem;
+        text-shadow: 3px 0 0 black;
+        text-decoration: none;
+
+        gap: 10px;
+    }
 `;
 
 const Item = styled(motion.li)`
     position: relative;
     width: 85px;
     height: 85px;
+    min-width: 85px;
+    min-height: 85px;
     border-radius: 8px;
     overflow: hidden;
 
@@ -40,15 +50,12 @@ const Item = styled(motion.li)`
     @media ${devices.mobileL} {
         width: 75px;
         height: 75px;
+        min-width: 75px;
+        min-height: 75px;
     }
 `;
 
 const ItemInfo = styled(motion.div)`
-    h3 {
-        font-size: 1.2rem;
-        text-shadow: 3px 0 0 black;
-        margin: 5px 10px;
-    }
 `;
 
 const ImageContainer = styled(motion.div)`
@@ -88,32 +95,32 @@ export default function AlbumIcons({ hash, albums }) {
                         <ItemContainer
                             key={album.anchor + '_icon'}
                             layout>
-                            <Item 
-                                className={isCurrent(hash, album) ? 'selected' : ''}
-                                layout
-                                >
-                                { isCurrent(hash, album) &&
-                                    <Scanner />
+                            <a href={'#' + album.anchor}>
+                                <Item 
+                                    className={isCurrent(hash, album) ? 'selected' : ''}
+                                    layout
+                                    >
+                                    { isCurrent(hash, album) &&
+                                        <Scanner />
+                                    }
+                                        <ImageContainer 
+                                            $src={'/albumart/' + album.art} 
+                                            animate={isCurrent(hash, album) ? selectedAnimation : initial}
+                                            initial={initial}
+                                            transition={{
+                                                duration: 0.1,
+                                                delay: 0.1,
+                                            }}>
+                                            <Img
+                                                fluid={album.albumImg}/>
+                                        </ImageContainer>
+                                </Item>
+                                { isUnselected(hash) &&
+                                    <ItemInfo>
+                                        <h3>{album.title}</h3>
+                                    </ItemInfo>
                                 }
-                                <a href={'#' + album.anchor}>
-                                    <ImageContainer 
-                                        src={'/albumart/' + album.art} 
-                                        animate={isCurrent(hash, album) ? selectedAnimation : initial}
-                                        initial={initial}
-                                        transition={{
-                                            duration: 0.1,
-                                            delay: 0.1,
-                                        }}>
-                                        <Img
-                                            fluid={album.albumImg}/>
-                                    </ImageContainer>
-                                </a>
-                            </Item>
-                            { isUnselected(hash) &&
-                                <ItemInfo>
-                                    <h3>{album.title}</h3>
-                                </ItemInfo>
-                            }
+                            </a>
                         </ItemContainer>
                     ))
                 }

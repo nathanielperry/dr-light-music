@@ -22,6 +22,7 @@ const Container = styled.div`
     border-image: url("/border.png") 32 repeat;
 
     @media ${devices.mobileL} {
+        padding-top: 35px;
         width: 320px;
         height: 500px;
     }
@@ -69,14 +70,19 @@ export default function AlbumsContainer({ albums, hash }) {
 
     //Add new technobabble word every X seconds
     React.useEffect(() => {
+        let isMounted = true;
         async function addNewTechWord() {
             const newVerb = await technoBabble.getVerb();
             const newWord = await technoBabble.getWord();
-
-            setCommandLines(oldLines => [...oldLines, `${newVerb} ${newWord}...`]);
-            setTimeout(() => addNewTechWord(), 1000 * (Math.floor(Math.random() * 4)));
+            
+            if (isMounted) {
+                setCommandLines(oldLines => [...oldLines, `${newVerb} ${newWord}...`]);
+                setTimeout(() => addNewTechWord(), 1000 * (Math.floor(Math.random() * 4)));
+            }
         }
         addNewTechWord();
+
+        return () => isMounted = false;
     }, []);
 
     const renderAlbum = (hash)  => {
