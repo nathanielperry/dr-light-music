@@ -74,7 +74,7 @@ const MenuContainer = styled.div`
 
 const Home = () => {
   return (
-    <>
+    <div>
       <SEO title='Dr. Light Music' />
       <Title />
       <MenuContainer>
@@ -91,7 +91,7 @@ const Home = () => {
           <SocialMediaIcon><a href="https://music.youtube.com/channel/UCK_OqjYpv8hG_EA-xiR7c7w"><img src="/social6.png" alt="Youtube Music" /></a></SocialMediaIcon>
         </SocialMedia>
       </MenuContainer>
-    </>
+    </div>
   )
 }
 
