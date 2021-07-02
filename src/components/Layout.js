@@ -41,12 +41,16 @@ const Container = styled.div`
 
 export default function Layout({ children, path }) {
     const [isScrolling, setIsScrolling] = React.useState(false);
-    const [initialScroll, setInitialScroll] = React.useState(false);
+    const [initialScroll, setInitialScroll] = React.useState(true);
     
     const pathScrollMap = {
-        '/about/': 0,
+        '/about/': 1,
         '/': 960,
         '/discography/': 2880,
+    }
+
+    const getScroll = (path) => {
+        return pathScrollMap[path] ? pathScrollMap[path] : pathScrollMap['/'];
     }
 
     //When path changes, toggle isScrolling flag until animation is complete
@@ -62,9 +66,9 @@ export default function Layout({ children, path }) {
     return (
         <AnimatePresence>
             <OuterContainer
-                scroll={pathScrollMap[path]}>
+                scroll={getScroll(path)}>
                     <Container
-                        scroll={pathScrollMap[path]}>
+                        scroll={getScroll(path)}>
                             {
                                 path !== '/' &&
                                 <Navbar
