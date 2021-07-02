@@ -49,6 +49,7 @@ export default function Layout({ children, path }) {
         '/discography/': 2880,
     }
 
+    //When path changes, toggle isScrolling flag until animation is complete
     React.useEffect(() => {
         if(initialScroll) {
             setIsScrolling(true);
@@ -59,7 +60,7 @@ export default function Layout({ children, path }) {
     }, [path]);
     
     return (
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
             <OuterContainer
                 scroll={pathScrollMap[path]}>
                     <Container
